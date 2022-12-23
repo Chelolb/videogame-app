@@ -2,26 +2,41 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import imgRedux from '../../assets/imgTech/redux-toolkit.png';
-import imgReact from '../../assets/imgTech/react-native.png'
+import imgReact from '../../assets/imgTech/react-native.png';
+import Button from '../components/Button';
 
 // create a component
-const UsedTech = () => {
+const UsedTech = ( { navigation } ) => {
     return (
         <View style={styles.container}>
-            <Text style={{ fontSize: 20, fontWeight: '200', marginBottom: 35, padding: 10 }}>In this project the following technologies and tools were used...</Text>
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{ fontSize: 20, fontWeight: '200', marginBottom: 5, padding: 10 }}>
+                In this project the following technologies and tools were used...
+            </Text>
+            <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', 
+                borderWidth: 1, borderColor: 'lightgreen', borderRadius: 10, marginVertical: 5}}>
                 <Image
                     style={{ width: 80, height: 100, marginBottom: 15, resizeMode: 'contain' }}
                     source={ imgReact }
                 />
-                <Text style={{ color: '#63dbfb', fontSize: 30, fontWeight: '400', margin: 10}}> React Native</Text>
+                <Text style={{ color: '#63dbfb', fontSize: 30, fontWeight: '400', margin: 10}}>
+                    React Native
+                </Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', 
+                borderWidth: 1, borderColor: 'lightgreen', borderRadius: 10, marginVertical: 5}}>
                 <Image
                     style={{ width: 80, height: 100, marginBottom: 15, resizeMode: 'contain' }}
                     source={ imgRedux }
                 />
-                <Text style={{ color: '#643cb4', fontSize: 30, fontWeight: '400', margin: 10}}> Redux ToolKit</Text>
+                <Text style={{ color: '#643cb4', fontSize: 30, fontWeight: '400', margin: 10}}>
+                    Redux ToolKit
+                </Text>
+            </View>
+            <View style={{ marginTop: 10}}>
+                <Button                    // show Backend button
+                    title = 'Show Backend Tech'
+                    onPress={() => navigation.navigate('Backend Tech')}>
+                </Button>
             </View>
         </View>
     );

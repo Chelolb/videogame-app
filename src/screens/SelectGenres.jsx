@@ -7,13 +7,25 @@ import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 // create a component
-const SelectGenres = ( { navigation } ) => {
-    
+const SelectGenres = ( { route, navigation } ) => {
+
+    const { genresSelect } = route.params; 
     const dispatch = useDispatch();
 
     const [openG, setOpenG] = useState(false);
     const [valueG, setValueG] = useState([]); 
     
+          
+    useEffect(() => { 
+
+        if (genresSelect.length) {
+            console.log(genresSelect);
+            let Selected = genresSelect.split(', ');
+            setValueG(Selected);
+        }
+
+    }, []);
+
     let itemsGenres = [];
     
     let allGenres= [];

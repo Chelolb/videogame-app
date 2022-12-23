@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import About from '../screens/About';
 import UsedTech from '../screens/UsedTech';
+import ShowBackend from '../screens/ShowBackend';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
@@ -20,6 +21,11 @@ const StackAbout = () => {
             <Stack.Screen 
                 name="Technology" 
                 component={UsedTech}
+                options={{ headerShown: true }} 
+            />
+            <Stack.Screen 
+                name="Backend Tech" 
+                component={ShowBackend}
                 options={{ headerShown: true }} 
             />
         </Stack.Navigator>

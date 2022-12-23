@@ -149,7 +149,7 @@ const Create = ( { route, navigation } ) => {
                         <Button
                             style={{with: 70, marginVertical: 15}}
                             title = 'Select Platforms'
-                            onPress={() => navigation.navigate('Select Plataforms')}>
+                            onPress={() => navigation.navigate('Select Plataforms', {platformsSelect: valor})}>
                         </Button>
                     </View>
                     <View style={valueP.length ? styles.containerValue : styles.containerValue0}>
@@ -190,7 +190,7 @@ const Create = ( { route, navigation } ) => {
                         <Button
                             style={{with: 70, marginVertical: 15}}
                             title = 'Select Genres'
-                            onPress={() => navigation.navigate('Select Genres')}>
+                            onPress={() => navigation.navigate('Select Genres', {genresSelect: valor1})}>
                         </Button>
                     </View>
 

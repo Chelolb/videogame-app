@@ -24,7 +24,7 @@ const Home = ( {navigation} ) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            {/* <SearchBar/> */}
+            <SearchBar/>
             <ScrollView contentContainerStyle={styles.ScrollViewStyles}>
                 <View>
                 {!currentVideogame.length ?    //  if array have not elements

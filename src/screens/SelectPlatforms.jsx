@@ -1,5 +1,5 @@
 //import libraries
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { View, Text, StyleSheet } from 'react-native';
 import { setNewPlatforms } from "../../reducers";
@@ -7,12 +7,25 @@ import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 // create a component
-const SelectPlatforms = ( { navigation } ) => {
-    
+const SelectPlatforms = ( { route, navigation } ) => {
+
+    const { platformsSelect } = route.params;
     const dispatch = useDispatch();
 
     const [openP, setOpenP] = useState(false);
     const [valueP, setValueP] = useState([]);
+
+          
+    useEffect(() => { 
+
+        if (platformsSelect.length) {
+            console.log(platformsSelect);
+            let Selected = platformsSelect.split(', ');
+            setValueP(Selected);
+        }
+
+    }, []);
+
 
     // const [platforms, setPlatforms] = useState([]);
 
