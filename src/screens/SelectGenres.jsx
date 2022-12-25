@@ -76,12 +76,12 @@ const SelectGenres = ( { route, navigation } ) => {
 
     return (
         <View style={styles.container}>
-            <View style={{ borderWidth: 1, borderRadius: 10}}>
+            <View style={styles.containerAll}>
                 <Text style={{fontSize: 20, fontWeight: '100', padding: 10, alignSelf: 'center' }}>Select the Genres...</Text>
 
                 <View style={{width: 260, alignSelf: 'center', padding: 20}}>
                         <DropDownPicker
-                            style={{backgroundColor: '#dfffdf', borderColor: 'green'}}
+                            style={{backgroundColor: 'lightblue', borderColor: 'purple'}}
                             multiple={true}
                             min={0}
                             max={4}
@@ -97,7 +97,7 @@ const SelectGenres = ( { route, navigation } ) => {
                             ? valueG.map((c, index) => {         //  show selected type
                                 return (
                                     <View style={styles.valueLabel} key={index} >
-                                        <Text style={{ backgroundColor: '#dfffdf', marginVertical: 2, paddingHorizontal: 10 }}>{c}</Text>
+                                        <Text style={styles.txtGenres}>{c}</Text>
                                     </View>
                                 )
                             })
@@ -125,17 +125,27 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
     },
+    containerAll: { 
+        borderWidth: 2, 
+        borderColor: 'blue',
+        borderRadius: 10
+    },
     containerValue: {
         flexDirection: 'column',
         marginTop: 5,
         padding: 10,
         borderWidth: 1, 
         borderRadius: 5,
-        borderColor: 'green',
+        borderColor: 'purple',
     }, 
     containerValue0: {
         borderWidth: 0, 
     },
+    txtGenres: { 
+        backgroundColor: 'lightblue', 
+        marginVertical: 2, 
+        paddingHorizontal: 10,
+    }
 });
 
 //make this component available to the app

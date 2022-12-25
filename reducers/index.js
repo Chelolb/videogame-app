@@ -1,5 +1,6 @@
 import {createSlice, dispatch } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Alert } from 'react-native';
 const ROUTE = 'http://192.168.0.137:3001' // since the device    (host Local)
 
 
@@ -59,11 +60,15 @@ export const videogameSlice = createSlice({
                 ? allVideogame2.filter(e => e.createdDb) // if filter for DB
                 : allVideogame2.filter(e => !e.createdDb); // if filter for API
 
+            if(action.payload !== 'all' && statusFiltered2.length === 0){
+                alert("no videogame was found with the selected option")
+            }else{
                 state.allVideogameFiltered = action.payload === 'all' 
                 ? allVideogame2                       // if Option is ALL
                 : statusFiltered2;                  // if Option es Only Source
 
                 state.filterSource = action.payload
+            }
         },
 
         getVideogameSortByName(state, action){
@@ -130,8 +135,13 @@ export const videogameSlice = createSlice({
             const allVideogame2 = state.allVideogame
             const statusFiltered2 = action.payload === "all" ? allVideogame2 : allVideogame2.filter(el => el.genres.includes(action.payload) )   
             
-            statusFiltered2.length ? state.allVideogameFiltered = statusFiltered2 : state.allVideogameFiltered = {"msg": "No se encontro el id indicado en DB"}
+            if(statusFiltered2.length === 0){
+                alert('not found videogames of the selected genres')
+            }else{
+            //statusFiltered2.length ? 
+            state.allVideogameFiltered = statusFiltered2 //: state.allVideogameFiltered = {"msg": "No se encontro el id indicado en DB"}
             state.filterGenre = action.payload
+            }
         }
 
     }

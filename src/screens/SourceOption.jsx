@@ -39,7 +39,7 @@ const SourceOption = ( { navigation } ) => {
 
     function setFilter() {
         dispatch(getVideogameFilter(option));
-        alert(`Option source: "${option}" activado`)
+        //alert(`Option source: "${option}" activado`)
         navigation.navigate('Principal')
     }
 
@@ -49,12 +49,13 @@ const SourceOption = ( { navigation } ) => {
                 <Text style={{ fontSize: 28, fontWeight: '400', marginVertical: 25 }}>Select Videogame's Source</Text>
                 <View style={styles.contRadioBtn}>
                     <CheckBox
-                        style = {{margin: 0}}
+                        style = {styles.radioButton}
                         title= "All"
                         center
                         checked = {all}
                         checkedIcon = "dot-circle-o"
                         uncheckedIcon='circle-o'
+                        checkedColor='purple'
                         onPress={optionAll}
                         />
                     <CheckBox
@@ -64,6 +65,7 @@ const SourceOption = ( { navigation } ) => {
                         checked = {api}
                         checkedIcon = "dot-circle-o"
                         uncheckedIcon='circle-o'
+                        checkedColor='purple'
                         onPress={optionApi}
                     />
                     <CheckBox
@@ -73,6 +75,7 @@ const SourceOption = ( { navigation } ) => {
                         checked = {db}
                         checkedIcon = "dot-circle-o"
                         uncheckedIcon='circle-o'
+                        checkedColor='purple'
                         onPress={optionDb}
                     />
                 </View>
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'lightblue',
     },
     contRadioBtn: {
         flex: 1,
@@ -102,12 +105,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         marginTop: 25,
         marginBottom: 25,
-        borderColor: 'green',
+        borderColor: 'blue',
         borderWidth: 2,
         borderRadius: 15
     },
     radioButton: {
-        margin: 0
+        margin: 0,
+        tintColor: 'green'
     }
 });
 

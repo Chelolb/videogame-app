@@ -131,11 +131,10 @@ const Create = ( { route, navigation } ) => {
                         onChangeText={setBackground_image} />
                 </View>
 
-                    <View style={ {width: 300, borderWidth: 1, borderRadius: 5, 
-                                    marginBottom: 15,  backgroundColor: '#dfffdf'}}>
+                    <View style={styles.containerDescription}>
                         <Text style={styles.txtStyle}>Description:</Text>
                         <TextInput 
-                            style={{ backgroundColor: '#fff', borderRadius: 5, margin: 10, paddingHorizontal: 10}}
+                            style={styles.inputDescription}
                             textAlignVertical= 'top'
                             multiline
                             numberOfLines={10} 
@@ -144,7 +143,7 @@ const Create = ( { route, navigation } ) => {
                             onChangeText={setDescription} />
                     </View>
 
-                <View style={{width: 300, alignSelf: 'center', borderWidth: 1, borderRadius: 5}}>
+                <View style={styles.viewSelect}>
                     <View style={{paddingHorizontal: 50, marginVertical: 10}}>
                         <Button
                             style={{with: 70, marginVertical: 15}}
@@ -157,7 +156,7 @@ const Create = ( { route, navigation } ) => {
                         ? valueP.map((c, index) => {         //  show selected platform
                             return (
                                 <View style={styles.valueLabel} key={index} >
-                                    <Text style={{ backgroundColor: '#dfffdf', marginVertical: 2, paddingHorizontal: 10 }}>{c}</Text>
+                                    <Text style={styles.txtSelect}>{c}</Text>
                                 </View>
                             )
                         })
@@ -185,7 +184,7 @@ const Create = ( { route, navigation } ) => {
                     </View>
                 </View>
  
-                <View style={{width: 300, alignSelf: 'center', borderWidth: 1, borderRadius: 5}}>
+                <View style={styles.viewSelect}>
                     <View style={{paddingHorizontal: 50, marginVertical: 10}}>
                         <Button
                             style={{with: 70, marginVertical: 15}}
@@ -199,7 +198,7 @@ const Create = ( { route, navigation } ) => {
                         ? valueG.map((c, index) => {         //  show selected type
                             return (
                                 <View style={styles.valueLabel} key={index} >
-                                    <Text style={{ backgroundColor: '#dfffdf', marginVertical: 2, paddingHorizontal: 10 }}>{c}</Text>
+                                    <Text style={styles.txtSelect}>{c}</Text>
                                 </View>
                             )
                         })
@@ -227,14 +226,14 @@ const Create = ( { route, navigation } ) => {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: '#fff',
+          backgroundColor: 'lightblue',
       },
       containerHeader: {
           width: 300,
-          borderColor: 'green',
-          borderWidth: 1,
+          borderColor: 'blue',
+          borderWidth: 2,
           borderRadius: 5,
-          backgroundColor: '#dfffdf',
+          backgroundColor: 'white',
           marginVertical: 15,
       },
       inputTxt: {
@@ -242,35 +241,66 @@ const Create = ( { route, navigation } ) => {
           backgroundColor: '#fff', 
           marginHorizontal: 10, 
           marginBottom: 10,
+          borderWidth: 1,
+          borderColor: 'purple',
           borderRadius: 3, 
           paddingHorizontal: 5
+      },
+      containerDescription: {
+          width: 300, 
+          borderColor: 'blue',
+          borderWidth: 2, 
+          borderRadius: 5, 
+          marginBottom: 15,  
+          backgroundColor: 'white'
+      },
+      inputDescription: { 
+        backgroundColor: '#fff', 
+        borderWidth: 1,
+        borderColor: 'purple',
+        borderRadius: 5, 
+        margin: 10, 
+        paddingHorizontal: 10
+      },
+      viewSelect: {
+        width: 300, 
+        alignSelf: 'center', 
+        borderWidth: 1, 
+        borderRadius: 5,
+        borderColor: 'blue',
+        backgroundColor: 'white'
+      },
+      txtSelect: { 
+        backgroundColor: 'lightblue', 
+        marginVertical: 2, 
+        paddingHorizontal: 10 
       },
       containerItems: {
           width:300,
           height:35,
           flexDirection: 'row',
           justifyContent: 'space-evenly',
-          backgroundColor: '#fff',
+          backgroundColor: 'transparent',
           marginVertical: 10,
       },
       containerSubItems0: {
           flex: 3,
           flexDirection: 'row',
           width: 125,
-          borderColor: 'green',
+          borderColor: 'blue',
           borderWidth: 1,
           borderRadius: 5,
-          backgroundColor: '#dfffdf',
+          backgroundColor: 'white',
       },
       containerSubItems1: {
         flex: 2,
         flexDirection: 'row',
         width: 125,
-        borderColor: 'green',
+        borderColor: 'blue',
         borderWidth: 1,
         borderRadius: 5,
         marginLeft: 10,
-        backgroundColor: '#dfffdf',
+        backgroundColor: 'white',
     },
       txtStyle: {
           marginHorizontal: 5,
@@ -282,14 +312,22 @@ const Create = ( { route, navigation } ) => {
           justifyContent: 'center',
           width: 50,
           marginVertical: 5,
+          borderColor: 'purple',
+          borderWidth: 1,
+          borderRadius: 5,
+          paddingLeft: 5,
           backgroundColor: '#fff',
       },
-      input1: {
+      input1: { 
+        width: 90,
         alignContent: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        width: 90,
         marginVertical: 5,
+        borderColor: 'purple',
+        borderWidth: 1,
+        borderRadius: 5,
+        paddingLeft: 5,
         backgroundColor: '#fff',
     },
       containerValue: {
@@ -300,7 +338,7 @@ const Create = ( { route, navigation } ) => {
           padding: 10,
           borderWidth: 1, 
           borderRadius: 5,
-          borderColor: 'green',
+          borderColor: 'blue',
       }, 
       containerValue0: {
           borderWidth: 0, 

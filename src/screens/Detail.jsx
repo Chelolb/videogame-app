@@ -74,24 +74,29 @@ const Detail = ( {route, navigation} ) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: '95%',
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'lightblue',
     },
     cardTitle: {
+        color: 'blue',
         alignSelf: 'center',
         fontSize: 30,
         fontWeight: '400',
-        marginBottom: 10,
+        marginVertical: 10,
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        padding: 7
     },
     img: {
         width: 300,
         height: 300,
         alignSelf: 'center',
+        borderColor: 'white',
+        borderRadius: 20,
         borderWidth: 2,
-        borderColor: 'black',
-        borderRadius: 10,
+
         marginTop: 15,
     },
     containerProperties: {
@@ -100,16 +105,17 @@ const styles = StyleSheet.create({
         width: 320,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        margin: 5,
+        margin: 5
     },
     txtDescription: {
         width: 310,
         margin: 5,
         borderWidth: 2,
-        borderColor: 'grey',
+        borderColor: 'purple',
         borderRadius: 10,
         padding: 10,
-        textAlign: 'justify'
+        textAlign: 'justify',
+        backgroundColor: 'rgba(235, 235, 235, 0.7)'
     },
     txtProperties: {
         alignSelf: 'flex-start',
@@ -128,9 +134,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        margin: 5,
-        backgroundColor: 'lightblue',
-        borderRadius: 5
+        margin: 3,
+        borderColor: 'purple',
+        borderWidth: 2,
+        backgroundColor: 'white',
+        borderRadius: 10
     },
     genreStyle:{
         alignSelf: 'center',
@@ -138,9 +146,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginVertical: 10,
         paddingHorizontal: 5,
-        borderColor: 'green',
+        borderColor: 'lightblue',
         borderWidth: 1,
-        borderRadius: 5,
+        borderRadius: 10,
         backgroundColor: 'white',
     },
     titlePlatforms: {
@@ -156,9 +164,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        margin: 5,
-        backgroundColor: 'lightgreen',
-        borderRadius: 5
+        margin: 3,
+        backgroundColor: 'white',
+        borderRadius: 10,
+        borderWidth: 2,
+        borderColor: 'purple'
     },
     platformsStyle:{
         alignSelf: 'center',
@@ -166,9 +176,9 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginVertical: 10,
         paddingHorizontal: 5,
-        borderColor: 'green',
+        borderColor: 'lightblue',
         borderWidth: 1,
-        borderRadius: 5,
+        borderRadius: 10,
         backgroundColor: 'white',
     }
 });

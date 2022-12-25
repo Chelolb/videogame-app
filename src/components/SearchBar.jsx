@@ -3,7 +3,7 @@ import { View, TextInput, Text, Image, StyleSheet } from 'react-native';
 import { useState } from "react";
 import Button from './Button';
 import {useDispatch} from "react-redux";
-import { getVideogameByName } from "../../reducers";
+import { getVideogameByName, getAllVideogames } from "../../reducers";
 
 
 export default function SearchBar(){
@@ -15,6 +15,9 @@ export default function SearchBar(){
         e.preventDefault()
         if(!name || !isNaN(name)){          // if input is empy
             alert('Must indicate a word to search!');   
+        }else if (name.toLowerCase() === 'all'){
+            dispatch(getAllVideogames())   // call endpoint AllView;
+            setName('');
         }else{                             // call endpoint Search By name
             dispatch(getVideogameByName(name.toLowerCase())) 
             setName('');
@@ -45,7 +48,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderWidth: 2,
         borderRadius: 10,
-        borderColor: 'green'
+        borderColor: 'blue',
+        backgroundColor: 'white'
     },
     input: {
         width: 150,
@@ -55,8 +59,9 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         borderWidth: 1,
         borderRadius: 5,
-        borderColor: 'lightgreen',
+        borderColor: 'violet',
         padding: 10,
+        backgroundColor: 'white'
     },
   });
   

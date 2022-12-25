@@ -94,11 +94,11 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white',
+        backgroundColor: 'lightblue',
     },
     ScrollViewStyles: {
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: 'transparent',
     },
 });
 

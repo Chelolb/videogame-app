@@ -77,12 +77,12 @@ const SortOption = ( { navigation } ) => {
     function setFilter() {
         if (option === "name"){
             dispatch(getVideogameSortByName(optionSortName));
-            alert(`Sort by "${option} ${optionSortName}" activate`)
+            //alert(`Sort by "${option} ${optionSortName}" activate`)
             navigation.navigate('Principal')
         }
         else {
             dispatch(getVideogameSortByRating(optionSortRating));
-            alert(`Sort by "${option} ${optionSortRating}" activate`)
+            //alert(`Sort by "${option} ${optionSortRating}" activate`)
             navigation.navigate('Principal')
         }
     }
@@ -101,11 +101,12 @@ const SortOption = ( { navigation } ) => {
                         checked = {name}
                         checkedIcon = "dot-circle-o"
                         uncheckedIcon='circle-o'
+                        checkedColor='purple'
                         onPress={optionName}
                         />
                         {option === "rating"
                         ?
-                        <View style={{ borderWidth: 2, borderColor: 'green', borderRadius: 15, alignItems: 'flex-start',
+                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
                                     margin: 10}}>
                             <CheckBox
                                 disabled = {true}
@@ -114,6 +115,7 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortNameUp}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionNameUp}
                             />                             
                             <CheckBox
@@ -123,11 +125,12 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortNameDown}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionNameDown}
                             />
                         </View>
                         :
-                        <View style={{ borderWidth: 2, borderColor: 'green', borderRadius: 15, alignItems: 'flex-start',
+                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
                                     margin: 10}}>
                             <CheckBox
                                 title= "Up"
@@ -135,6 +138,7 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortNameUp}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionNameUp}
                             />
                             <CheckBox
@@ -143,6 +147,7 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortNameDown}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionNameDown}
                             />
                         </View>    
@@ -155,11 +160,12 @@ const SortOption = ( { navigation } ) => {
                         checked = {ranking}
                         checkedIcon = "dot-circle-o"
                         uncheckedIcon='circle-o'
+                        checkedColor='purple'
                         onPress={optionRating}
                     />
                        {option === "name" 
                        ?
-                        <View style={{ borderWidth: 2, borderColor: 'green', borderRadius: 15, alignItems: 'flex-start',
+                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
                                     margin: 10 }}>
 
                             <CheckBox
@@ -169,6 +175,7 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortRatingUp}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionRatingUp}
                             />
                             <CheckBox
@@ -178,11 +185,12 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortRatingDown}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionRatingDown}
                             />
                         </View>
                         :
-                        <View style={{ borderWidth: 2, borderColor: 'green', borderRadius: 15, alignItems: 'flex-start',
+                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
                                 margin: 10 }}>
 
                             <CheckBox
@@ -191,6 +199,7 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortRatingUp}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionRatingUp}
                             />
                             <CheckBox
@@ -199,6 +208,7 @@ const SortOption = ( { navigation } ) => {
                                 checked = {sortRatingDown}
                                 checkedIcon = "dot-circle-o"
                                 uncheckedIcon='circle-o'
+                                checkedColor='purple'
                                 onPress={optionRatingDown}
                             />    
                         </View>
@@ -221,7 +231,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'lightblue',
     },
     contRadioBtnGroup: {
         flex: 1,
@@ -231,7 +241,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff',
         margin: 5,
-        borderColor: 'green',
+        borderColor: 'blue',
         borderWidth: 2,
         borderRadius: 15
     }

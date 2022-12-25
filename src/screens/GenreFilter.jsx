@@ -26,28 +26,32 @@ const GenreFilter = ( { navigation } ) => {
 
     function setFilter() {
         dispatch(getVideogameByGenre(value));
-        alert(`filter genre: "${value}" activated`)
+        //alert(`filter genre: "${value}" activated`)
         navigation.navigate('Principal')
     }
 
     return (
         <View style={styles.container}>
-            <Text style={{ fontSize: 28, fontWeight: '400', marginVertical: 25 }}>Select Videogame's Genre</Text>
-            <View style={{width: 260, alignSelf: 'center', margin: 5}}>
+            <View style={{width: 330, alignItems: 'center'}}>
+                <Text style={{ fontSize: 28, fontWeight: '400', marginTop: 25, marginBottom: 25 }}>
+                    Select Videogame's Genre
+                </Text>
                 <DropDownPicker
+                    style={{ width: 280, backgroundColor: 'white', borderColor: 'purple',
+                        marginBottom: 25, marginTop: 30, alignSelf: 'center'}}
                     open={open}
                     value={value}
                     items={items}
                     setOpen={setOpen}
                     setValue={setValue}
                 />
-            </View>
-            <View style={{paddingHorizontal: 20, marginVertical: 15}}>
-                <Button
-                    style={{with: 70, marginVertical: 25 }}
-                    title = 'Set'
-                    onPress={() => setFilter()}>
-                </Button>
+                <View style={{width: 75, marginTop: 150, alignSelf: 'center'}}>
+                    <Button
+                        style={{with: 40, marginVertical: 25 }}
+                        title = 'Set'
+                        onPress={() => setFilter()}>
+                    </Button>
+                </View>
             </View>
         </View>
     );
@@ -59,7 +63,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'lightblue',
     },
 });
 

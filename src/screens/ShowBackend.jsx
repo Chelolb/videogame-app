@@ -15,23 +15,26 @@ const ShowBackend = () => {
                 This project uses a backend that has the following technologies and tools...
                 </Text>
                 <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center' , alignItems: 'center', alignContent: 'center',
-                    borderWidth: 1, borderColor: 'lightgreen', borderRadius: 10, marginVertical: 5, alignSelf: 'center'}}>
+                    borderWidth: 2, borderColor: 'purple', borderRadius: 10, marginVertical: 5, alignSelf: 'center',
+                    backgroundColor: '#fff'}}>
                     <Image
                         style={{ width: 200, height: 80, resizeMode: 'contain', marginVertical: 5}}
                         source={ imgExpress }
                     />
                 </View>
                 <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', 
-                    borderWidth: 1, borderColor: 'lightgreen', borderRadius: 10, marginVertical: 5, alignSelf: 'center'}}>
+                    borderWidth: 2, borderColor: 'purple', borderRadius: 10, marginVertical: 5, alignSelf: 'center',
+                    backgroundColor: '#fff'}}>
                     <Image
-                        style={{ width: 230, height: 90, resizeMode: 'contain' }}
+                        style={{ width: 230, height: 80, resizeMode: 'contain', marginVertical: 2}}
                         source={ imgSequelize }
                     />
                 </View>
                 <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', 
-                    borderWidth: 1, borderColor: 'lightgreen', borderRadius: 10, marginVertical: 5, alignSelf: 'center'}}>
+                    borderWidth: 2, borderColor: 'purple', borderRadius: 10, marginVertical: 5, alignSelf: 'center',
+                    backgroundColor: '#fff'}}>
                     <Image
-                        style={{ width: 200, height: 100, resizeMode: 'contain' }}
+                        style={{ width: 200, height: 80, resizeMode: 'contain', marginVertical: 2 }}
                         source={ imgPostgresql }
                     />
                 </View>
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'lightblue',
     },
 });
 

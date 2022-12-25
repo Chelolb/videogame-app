@@ -40,8 +40,11 @@ const TabNavigation = ( {navigation} ) => {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#74bcd8',   // colors in the diferents states
-        tabBarInactiveTintColor: '#d8da95',
+        // tabBarActiveTintColor: '#74bcd8',   // colors in the diferents states
+        // tabBarInactiveTintColor: '#d8da95',
+
+        tabBarActiveTintColor: 'purple',   // colors in the diferents states
+        tabBarInactiveTintColor: 'lightblue',
         })}
     >
             <Tab.Screen name="Principal" component={Menu} options={{ headerShown: false }}/>

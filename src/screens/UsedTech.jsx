@@ -13,7 +13,8 @@ const UsedTech = ( { navigation } ) => {
                 In this project the following technologies and tools were used...
             </Text>
             <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', 
-                borderWidth: 1, borderColor: 'lightgreen', borderRadius: 10, marginVertical: 5}}>
+                borderWidth: 2, borderColor: 'purple', borderRadius: 10, marginVertical: 5,
+                backgroundColor: 'rgba(255, 255, 255, 1)'}}>
                 <Image
                     style={{ width: 80, height: 100, marginBottom: 15, resizeMode: 'contain' }}
                     source={ imgReact }
@@ -23,7 +24,8 @@ const UsedTech = ( { navigation } ) => {
                 </Text>
             </View>
             <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', 
-                borderWidth: 1, borderColor: 'lightgreen', borderRadius: 10, marginVertical: 5}}>
+                borderWidth: 2, borderColor: 'purple', borderRadius: 10, marginVertical: 5,
+                backgroundColor: 'rgba(255, 255, 255, 1)'}}>
                 <Image
                     style={{ width: 80, height: 100, marginBottom: 15, resizeMode: 'contain' }}
                     source={ imgRedux }
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'lightblue',
     },
 });
 

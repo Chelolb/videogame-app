@@ -13,7 +13,7 @@ const About = ( { navigation} ) => {
                     <Text style={{fontSize: 35, fontWeight: '600'}}>MovGame</Text>
                 </View>
                 <Text style={{ marginBottom: 5}}>developer by:</Text>
-                <View style={{  alignItems: 'center', borderWidth: 2, borderRadius: 10}}>
+                <View style={{  alignItems: 'center', borderRadius: 10, backgroundColor: 'rgba(255, 255, 255, 0.6)'}}>
                     <View style= {{ marginTop: 5}}>
                         <Image style={styles.cardimg} source={ marceimg } />
                     </View>
@@ -23,21 +23,21 @@ const About = ( { navigation} ) => {
                 </View>
             </View>
              <View style={{ flexDirection: 'column', justifyContent: 'center', width: 310, alignItems: 'center', marginTop: 10}}>
-                <Text style={{ width: 290, borderWidth: 2, borderRadius: 10, padding: 10, textAlign: 'justify'}}>
+                <Text style={{ width: 290, borderRadius: 10, padding: 10, textAlign: 'justify', backgroundColor: 'rgba(255, 255, 255, 0.6)'}}>
                     This application is a "mobile version" of the frontend,
                     that consumes the data from the API backend of my version
                      VideoGames Project.
                 </Text>
             </View>
-            <View style={{ marginTop: 10}}>
+            <View style={{alignItems: 'center', justifyContent: 'center', 
+                            margin: 15, borderRadius: 5, backgroundColor: 'white'}}>
+                <Text style={{color: 'blue', padding: 5}}>NOTE: This App is in continuous updating and improvements features</Text>
+            </View>
+            <View style={{ marginTop: 5}}>
                 <Button                    // show Technology button
                     title = 'Show Technology'
                     onPress={() => navigation.navigate('Technology')}>
                 </Button>
-            </View>
-           <View style={{alignItems: 'center', justifyContent: 'center', 
-                            margin: 15, borderRadius: 5, backgroundColor: 'lightgreen'}}>
-                <Text style={{color: 'blue', padding: 5}}>NOTE: This App is in continuous updating and improvements features</Text>
             </View>
     </View>
     );
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'lightblue',
     },
     cardimg: {
         maxHeight: 100,
