@@ -10,10 +10,12 @@ const About = ( { navigation} ) => {
         <View style={styles.container}>
             <View style={{ justifyContent: 'flex-start', alignItems: 'center'}}>
                 <View>
-                    <Text style={{fontSize: 35, fontWeight: '600'}}>MovGame</Text>
+                    <Text style={styles.nameApp}>
+                        MovGame
+                    </Text>
                 </View>
                 <Text style={{ marginBottom: 5}}>developer by:</Text>
-                <View style={{  alignItems: 'center', borderRadius: 10, backgroundColor: 'rgba(255, 255, 255, 0.6)'}}>
+                <View style={styles.groupAuthor}>
                     <View style= {{ marginTop: 5}}>
                         <Image style={styles.cardimg} source={ marceimg } />
                     </View>
@@ -22,18 +24,19 @@ const About = ( { navigation} ) => {
                     </Text>
                 </View>
             </View>
-             <View style={{ flexDirection: 'column', justifyContent: 'center', width: 310, alignItems: 'center', marginTop: 10}}>
-                <Text style={{ width: 290, borderRadius: 10, padding: 10, textAlign: 'justify', backgroundColor: 'rgba(255, 255, 255, 0.6)'}}>
+             <View style={styles.notaStyle}>
+                <Text style={styles.txtNotaStyle}>
                     This application is a "mobile version" of the frontend,
                     that consumes the data from the API backend of my version
                      VideoGames Project.
                 </Text>
             </View>
             <View style={{alignItems: 'center', justifyContent: 'center', 
-                            margin: 15, borderRadius: 5, backgroundColor: 'white'}}>
-                <Text style={{color: 'blue', padding: 5}}>NOTE: This App is in continuous updating and improvements features</Text>
+                            margin: 15, borderRadius: 5, backgroundColor: '#FFEB73'}}>
+                <Text style={{color: 'purple', padding: 5}}>NOTE: This App is in continuous updating and improvements features</Text>
             </View>
-            <View style={{ marginTop: 5}}>
+            <View style={{ marginBottom: 10}}
+            >
                 <Button                    // show Technology button
                     title = 'Show Technology'
                     onPress={() => navigation.navigate('Technology')}>
@@ -49,13 +52,49 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'lightblue',
+        //backgroundColor: 'lightblue',
+        backgroundColor: '#D0D0D0',
+    },
+    nameApp: {
+        width: 180,
+        paddingHorizontal: 30,
+        paddingVertical: 10,
+        color: 'purple',
+        borderRadius: 10,
+        fontSize: 25,
+        fontWeight: 'bold',
+        marginVertical: 10,
+        alignSelf: 'center',
+        backgroundColor: '#FFEB73'   
+    },
+    groupAuthor: { 
+        alignItems: 'center', 
+        borderRadius: 10, 
+        backgroundColor: 'white', 
+        borderColor: 'purple',
+        borderWidth: 2,
     },
     cardimg: {
         maxHeight: 100,
         maxWidth: 100,
         resizeMode:"contain",
         borderRadius: 50,
+    },
+    notaStyle: { 
+        flexDirection: 'column', 
+        justifyContent: 'center', 
+        width: 310, 
+        alignItems: 'center', 
+        marginTop: 10
+    },
+    txtNotaStyle: { 
+        width: 290, 
+        borderColor: 'purple',
+        borderWidth: 2,
+        borderRadius: 10, 
+        padding: 10, 
+        textAlign: 'justify', 
+        backgroundColor: 'white'
     }
 });
 

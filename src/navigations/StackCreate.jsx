@@ -12,7 +12,12 @@ const Stack = createNativeStackNavigator();
 // create a component
 const StackCreate = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions= {{ 
+                headerStyle: { backgroundColor: 'purple', },
+                headerTintColor: 'white'
+            }}
+        >
             <Stack.Screen
                 name="Create"
                 component={Create}

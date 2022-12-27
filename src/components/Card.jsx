@@ -31,13 +31,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0.6)',
+        //backgroundColor: 'rgba(255, 255, 255, 0.6)',
+        //backgroundColor: '#41DB00',
+        backgroundColor: '#FFEB73',
         width: 300,
         minHeight: 300,
         borderRadius: 20,
         borderWidth: 1,
-        borderRightWidth: 5,
-        borderBottomWidth: 4,
+        borderRightWidth: 7,
+        borderBottomWidth: 7,
         borderColor: 'rgb(235, 235, 235)',
         margin: 20,
     },
@@ -51,9 +53,10 @@ const styles = StyleSheet.create({
     },
     cardTitle: {
         fontSize: 20,
-        fontWeight: '200',
+        fontWeight: 'bold',
         flexWrap: 'wrap',
         padding: 5,
+        color: 'purple'
     },
     genreContainer: {
         flex: 1,
@@ -65,8 +68,10 @@ const styles = StyleSheet.create({
     genreStyle:{
     alignSelf: 'center',
     fontSize: 15,
+    fontStyle: 'bold',
     marginHorizontal: 10,
     paddingHorizontal: 5,
+    color: 'purple',
     },
 });
 

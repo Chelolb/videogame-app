@@ -13,6 +13,10 @@ const Drawer = createDrawerNavigator();
 const FiltersNavigation = () => {
     return (
         <Drawer.Navigator
+            screenOptions= {{ 
+                headerStyle: { backgroundColor: 'purple', },
+                headerTintColor: 'white'
+            }}
             drawerContent = {(props) => <MenuItems { ...props } />}
             //  initialRouteName="Source Select" options={{ headerShown: true }}
         >
@@ -61,15 +65,16 @@ const styles = StyleSheet.create({
     },
     title: {
         width: 180,
-        paddingHorizontal: 20,
+        paddingHorizontal: 30,
         paddingVertical: 10,
-        color: 'blue',
-        borderColor: 'blue',
-        borderWidth: 2,
+        color: 'purple',
         borderRadius: 10,
         fontSize: 25,
         fontWeight: 'bold',
-        marginBottom: 20
+        marginBottom: 20,
+        alignSelf: 'center',
+        //backgroundColor: '#41DB00',
+        backgroundColor: '#FFEB73'
     }
 });
 

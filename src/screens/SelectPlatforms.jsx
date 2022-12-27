@@ -16,10 +16,10 @@ const SelectPlatforms = ( { route, navigation } ) => {
     const [valueP, setValueP] = useState([]);
 
           
-    useEffect(() => { 
+    useEffect(() => {    // if have params => read and create array
 
         if (platformsSelect.length) {
-            console.log(platformsSelect);
+            //console.log(platformsSelect);
             let Selected = platformsSelect.split(', ');
             setValueP(Selected);
         }
@@ -57,7 +57,7 @@ const SelectPlatforms = ( { route, navigation } ) => {
     //     setPlatforms(valueP)
     // }  
 
-    function setUpPlatforms() {
+    function setUpPlatforms() {       // send genres array at store
 
         //alert('platform selected');
 
@@ -76,7 +76,9 @@ const SelectPlatforms = ( { route, navigation } ) => {
 
                 <View style={{width: 260, alignSelf: 'center', padding: 20}}>
                     <DropDownPicker
-                        style={{backgroundColor: 'lightblue', borderColor: 'purple'}}
+                        style={{
+                            //backgroundColor: 'lightblue', 
+                            borderColor: 'purple'}}
                         multiple={true}
                         min={0}
                         max={10}
@@ -118,12 +120,13 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: '#D0D0D0',
     },
     containerAll: { 
-        borderWidth: 2, 
-        borderColor: 'blue',
-        borderRadius: 10
+        borderWidth: 4, 
+        borderColor: '#FFEB73',
+        borderRadius: 10,
+        backgroundColor: 'white',
     },
     containerValue: {
         flexDirection: 'column',

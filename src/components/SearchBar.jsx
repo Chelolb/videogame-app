@@ -46,9 +46,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 10,
-        borderWidth: 2,
+        borderWidth: 3,
         borderRadius: 10,
-        borderColor: 'blue',
+        borderColor: '#FFEB73',
+        //borderColor: '#41DB00',
+        //borderColor: '#739D00',
         backgroundColor: 'white'
     },
     input: {

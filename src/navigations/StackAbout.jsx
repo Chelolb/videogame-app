@@ -12,11 +12,17 @@ const Stack = createNativeStackNavigator();
 // create a component
 const StackAbout = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions= {{ 
+                headerStyle: { backgroundColor: 'purple', },
+                headerTintColor: 'white'
+            }}
+        >
             <Stack.Screen
                 name="Author"
                 component={About}
-                options={{ headerShown: false }}
+                options={{ headerShown: true, 
+                    title: `About`}}
             />
             <Stack.Screen 
                 name="Technology" 

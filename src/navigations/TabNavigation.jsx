@@ -15,7 +15,6 @@ const TabNavigation = ( {navigation} ) => {
     return (
         <Tab.Navigator             // define the Botton-tab 
         initialRouteName="Principal" // here define the "start" tab
-
         screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => { // according to the tab state
             let iconName;                           // show the corresponding icono
@@ -40,17 +39,16 @@ const TabNavigation = ( {navigation} ) => {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
         },
-        // tabBarActiveTintColor: '#74bcd8',   // colors in the diferents states
-        // tabBarInactiveTintColor: '#d8da95',
 
-        tabBarActiveTintColor: 'purple',   // colors in the diferents states
-        tabBarInactiveTintColor: 'lightblue',
-        })}
+        tabBarActiveTintColor: 'purple',   // Icon's colors in the diferents states
+        //tabBarInactiveTintColor: 'lightblue',
+        tabBarInactiveTintColor: '#D0D0D0'
+        })}       
     >
             <Tab.Screen name="Principal" component={Menu} options={{ headerShown: false }}/>
             <Tab.Screen name="Filters" component={FiltersNavigation} options={{ headerShown: false }}/>
-            <Tab.Screen name="New Videogame" component={StackCreate} options={{ headerShown: false }} />
-            <Tab.Screen name="About Us" component={StackAbout} />
+            <Tab.Screen name="New Videogame" component={StackCreate} options={{ headerShown: false }}/>
+            <Tab.Screen name="About Us" component={StackAbout} options={{ headerShown: false }}/>
           </Tab.Navigator>
     );
 };

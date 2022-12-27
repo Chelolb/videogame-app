@@ -92,7 +92,7 @@ const SortOption = ( { navigation } ) => {
         <View style={styles.container}>
             <View style={styles.container}>
             <View style={{ width: '100%', height: 460, alignItems: 'center' }}>
-                <Text style={{ fontSize: 28, fontWeight: '400', marginVertical: 5 }}>Select Sort Criteria</Text>
+                <Text style={{ fontSize: 28, fontWeight: '400', marginVertical: 5}}>Select Sort Criteria</Text>
                 <View style={styles.contRadioBtnGroup}>
                     <CheckBox
                         style = {styles.radioButton}
@@ -106,8 +106,7 @@ const SortOption = ( { navigation } ) => {
                         />
                         {option === "rating"
                         ?
-                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
-                                    margin: 10}}>
+                        <View style={styles.groupIntStyle}>
                             <CheckBox
                                 disabled = {true}
                                 title= "Up"
@@ -130,8 +129,7 @@ const SortOption = ( { navigation } ) => {
                             />
                         </View>
                         :
-                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
-                                    margin: 10}}>
+                        <View style={styles.groupIntStyle}>
                             <CheckBox
                                 title= "Up"
                                 center
@@ -155,6 +153,7 @@ const SortOption = ( { navigation } ) => {
                 </View>
                 <View style={styles.contRadioBtnGroup}>
                     <CheckBox
+                        style = {styles.radioButton}                    
                         title= "Sort By Rating Level"
                         center
                         checked = {ranking}
@@ -165,8 +164,7 @@ const SortOption = ( { navigation } ) => {
                     />
                        {option === "name" 
                        ?
-                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
-                                    margin: 10 }}>
+                        <View style={styles.groupIntStyle}>
 
                             <CheckBox
                                 disabled = {true}
@@ -190,9 +188,7 @@ const SortOption = ( { navigation } ) => {
                             />
                         </View>
                         :
-                        <View style={{ borderWidth: 2, borderColor: 'blue', borderRadius: 15, alignItems: 'flex-start',
-                                margin: 10 }}>
-
+                        <View style={styles.groupIntStyle}>
                             <CheckBox
                                 title= "Up"
                                 center
@@ -240,10 +236,21 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: '#fff',
-        margin: 5,
-        borderColor: 'blue',
-        borderWidth: 2,
+        margin: 2,
+        // borderColor: 'blue',
+        // borderWidth: 2,
+        borderWidth: 4, 
+        borderColor: '#FFEB73',
         borderRadius: 15
+    },
+    groupIntStyle: { 
+        //borderWidth: 2, 
+        //borderColor: 'blue', 
+        borderWidth: 4, 
+        borderColor: '#FFEB73', 
+        borderRadius: 15, 
+        alignItems: 'flex-start',
+        marginBottom: 15, 
     }
 });
 

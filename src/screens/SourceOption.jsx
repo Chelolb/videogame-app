@@ -95,7 +95,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'lightblue',
+        //backgroundColor: 'lightblue',
+        backgroundColor: '#D0D0D0',
     },
     contRadioBtn: {
         flex: 1,
@@ -105,8 +106,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         marginTop: 25,
         marginBottom: 25,
-        borderColor: 'blue',
-        borderWidth: 2,
+        //borderColor: '#739D00',
+        borderColor: '#FFEB73',
+        borderWidth: 4,
         borderRadius: 15
     },
     radioButton: {

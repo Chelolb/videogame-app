@@ -37,8 +37,7 @@ const GenreFilter = ( { navigation } ) => {
                     Select Videogame's Genre
                 </Text>
                 <DropDownPicker
-                    style={{ width: 280, backgroundColor: 'white', borderColor: 'purple',
-                        marginBottom: 25, marginTop: 30, alignSelf: 'center'}}
+                    style={styles.pickerStyle}
                     open={open}
                     value={value}
                     items={items}
@@ -63,8 +62,18 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: 'lightblue',
+        //backgroundColor: 'lightblue',
+        backgroundColor: '#D0D0D0',
     },
+    pickerStyle: { 
+        width: 280, 
+        backgroundColor: 'white',
+        borderWidth: 4, 
+        //borderColor: 'purple',
+        borderColor: '#FFEB73',
+        marginBottom: 25, 
+        marginTop: 30, 
+        alignSelf: 'center'}
 });
 
 //make this component available to the app

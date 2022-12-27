@@ -1,7 +1,7 @@
 //import libraries
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, StatusBar } from 'react-native';
 import { getAllVideogames } from "../../reducers";
 import Card from '../components/Card';
 import SearchBar from "../components/SearchBar";
@@ -24,6 +24,7 @@ const Home = ( {navigation} ) => {
 
     return (
         <SafeAreaView style={styles.container}>
+        <StatusBar barStyle = "light-content" hidden = {false} backgroundColor = "#770060" translucent = {true}/>
             <SearchBar/>
             <ScrollView contentContainerStyle={styles.ScrollViewStyles}>
                 <View>
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'lightblue',
+        backgroundColor: '#D0D0D0',
     },
     ScrollViewStyles: {
         width: '100%',

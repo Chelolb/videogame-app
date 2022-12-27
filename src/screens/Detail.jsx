@@ -77,14 +77,17 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'lightblue',
+        backgroundColor: '#D0D0D0',
     },
     cardTitle: {
-        color: 'blue',
+        color: 'purple',
         alignSelf: 'center',
         fontSize: 30,
-        fontWeight: '400',
+        fontWeight: 'bold',
         marginVertical: 10,
+        borderBottomWidth: 7,
+        borderRightWidth: 7,
+        borderColor: 'grey',
         borderRadius: 10,
         backgroundColor: '#fff',
         padding: 7
@@ -110,12 +113,13 @@ const styles = StyleSheet.create({
     txtDescription: {
         width: 310,
         margin: 5,
-        borderWidth: 2,
+        borderBottomWidth: 7,
+        borderRightWidth: 7,
         borderColor: 'purple',
         borderRadius: 10,
         padding: 10,
         textAlign: 'justify',
-        backgroundColor: 'rgba(235, 235, 235, 0.7)'
+        backgroundColor: 'yellow'
     },
     txtProperties: {
         alignSelf: 'flex-start',
@@ -123,8 +127,9 @@ const styles = StyleSheet.create({
     },
     titleGenres: {
         alignSelf: 'center',
+        color: 'purple',
         fontSize: 25,
-        fontWeight: '100',    
+        fontWeight: 'bold',    
     },
     genreContainer: {
         flex: 1,
@@ -146,15 +151,17 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginVertical: 10,
         paddingHorizontal: 5,
-        borderColor: 'lightblue',
-        borderWidth: 1,
+        borderColor: 'grey',
+        borderBottomWidth: 4,
+        borderRightWidth: 4,
         borderRadius: 10,
-        backgroundColor: 'white',
+        backgroundColor: 'yellow',
     },
     titlePlatforms: {
         alignSelf: 'center',
+        color: 'purple',
         fontSize: 25,
-        fontWeight: '100',    
+        fontWeight: 'bold',    
     },
     platformsContainer: {
         flex: 1,
@@ -176,10 +183,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         marginVertical: 10,
         paddingHorizontal: 5,
-        borderColor: 'lightblue',
-        borderWidth: 1,
+        borderColor: 'grey',
+        borderBottomWidth: 4,
+        borderRightWidth: 4,
         borderRadius: 10,
-        backgroundColor: 'white',
+        backgroundColor: 'yellow',
     }
 });
 

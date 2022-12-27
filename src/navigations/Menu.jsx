@@ -12,7 +12,12 @@ const Stack = createNativeStackNavigator();
 // create a component
 const Menu = () => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator 
+            screenOptions= {{ 
+                    headerStyle: { backgroundColor: 'purple', },
+                    headerTintColor: 'white'
+                }}
+        >
             <Stack.Screen
                 name="Home"
                 component={Home}
@@ -21,8 +26,18 @@ const Menu = () => {
             />
             <Stack.Screen 
                 name="Detail" 
-                component={Detail} 
-                options={{title: `Videogames Detail`}}/>
+                component={Detail}
+                options={{title: `Videogames Detail`,
+                        //    headerShown: false,
+                        //    headerTintColor: 'blue',
+                        //    hederTitleStyle: { Color: 'green', fontSize: 20},
+                        //    headerTitleAlign: 'left', 
+                        //    headerBackVisible: false,
+                        //    headerBackTitleVisible: false,
+                        //    headerBackTitle: 'Return to Home',
+                        //    headerBackTitleStyle: { fontSize: 20}
+                        }}
+            />
         </Stack.Navigator>
     );
 };
