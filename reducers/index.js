@@ -16,12 +16,14 @@ export const videogameSlice = createSlice({
         sortBy: [],
         sortDirection: [],
         newVideogamePlatforms: [],
-        newVideogameGenres: []
+        newVideogameGenres: [],
     },
     reducers:{
         getAllVideogames(state,action){  
             state.allVideogame = action.payload
             state.allVideogameFiltered = action.payload
+
+            state.flagActivityIndicator = []
         },
 
         getVideogameByName(state,action){       
@@ -35,6 +37,10 @@ export const videogameSlice = createSlice({
 
         // cleanDetail(state,action){
         //     state.detailVideogame = []
+        // },
+
+        // setShowActivityFlag(state,action){
+        //      state.flagActivityIndicator = action.payload
         // },
 
         setNewPlatforms(state,action){
@@ -215,6 +221,10 @@ export const getVideogameSortByRating = (payload) => async(dispatch) => {   // S
 export const getVideogameByGenre = (payload) => async(dispatch) => {   //  Filter Videogame by Genre
     dispatch(videogameSlice.actions.getVideogameByGenre(payload))
 }
+
+// export const setShowActivityFlag = (payload) => async(dispatch) => {       // set flag activity indicator
+//     dispatch(videogameSlice.actions.setShowActivityFlag(payload))
+// }
 
 export const setNewPlatforms = (payload) => async(dispatch) => {       // set array platforms
     dispatch(videogameSlice.actions.setNewPlatforms(payload))

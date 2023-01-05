@@ -1,21 +1,23 @@
 //import libraries
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView, 
+        TouchableOpacity, StatusBar, ActivityIndicator } from 'react-native';
 import { getAllVideogames } from "../../reducers";
 import Card from '../components/Card';
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
+import Loading from "../components/Loading";
 
 // create a component
 const Home = ( {navigation} ) => {
 
     const dispatch = useDispatch();  
-    
+
     useEffect(() => { dispatch(getAllVideogames()) }, [dispatch]);    // call all videogames endpoint
+
     
     let currentVideogame = useSelector((state) => state.VIDEOGAMES.allVideogameFiltered)
-
     //console.log(currentVideogame.length)
 
     function handleViewAll(e){       // ViewAll button function                       
@@ -35,15 +37,9 @@ const Home = ( {navigation} ) => {
                     <View>
                         <Text>{currentVideogame.msg}</Text>
                     </View>  
-                    :                       //  if is searching...                  
-                    <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={{fontSize: 20, fontWeight: '200'}}>
-                            Searching data, a moment please...
-                        </Text>
-                        <Image
-                            style={{ width: 200, height: 230}}
-                            source={{uri:'https://s3.amazonaws.com/quipslib/load.gif'}}
-                        />
+                    :                       //  if is searching...  
+                    <View>
+                        <Loading/>
                     </View>
                     )
                     :                       // if have find videogame

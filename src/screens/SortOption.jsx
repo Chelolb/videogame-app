@@ -227,7 +227,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: 'lightblue',
+        //backgroundColor: 'lightblue',
+        backgroundColor: '#D0D0D0'
     },
     contRadioBtnGroup: {
         flex: 1,

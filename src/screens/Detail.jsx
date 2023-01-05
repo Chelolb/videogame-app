@@ -1,8 +1,9 @@
 //import libraries
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import { getVideogameById } from "../../reducers";
+import Loading from "../components/Loading";
 
 // create a component
 const Detail = ( {route, navigation} ) => {
@@ -55,14 +56,8 @@ const Detail = ( {route, navigation} ) => {
                 </View>
             </View>
             :                   // if is searching data...
-            <View style={{alignItems: 'center', justifyContent: 'center'}}>
-                <Text style={{fontSize: 20, fontWeight: '200'}}>
-                    Searching data, a moment please...
-                </Text>
-                <Image
-                    style={{ width: 200, height: 230}}
-                    source={{uri:'https://s3.amazonaws.com/quipslib/load.gif'}}
-                />
+            <View>
+                <Loading/>
             </View>
             }
         </ScrollView> 
