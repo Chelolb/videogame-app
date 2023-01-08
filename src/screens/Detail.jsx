@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { View, Text, Image, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import { getVideogameById } from "../../reducers";
 import Loading from "../components/Loading";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // create a component
 const Detail = ( {route, navigation} ) => {
@@ -14,6 +15,21 @@ const Detail = ( {route, navigation} ) => {
     useEffect(() => { dispatch(getVideogameById(itemId)) }, [dispatch]);
 
     let detail = useSelector((state) => state.VIDEOGAMES.detailVideogame);
+
+    let integerRating = [];
+
+    let decimal = false;
+
+    //console.log(detail)
+
+    if(detail.rating > 0){     //if have detail, calculate show start
+        integerRating = Array.from(new Array(Math.floor(detail.rating)))
+
+        if(detail.rating > integerRating.length) { decimal = true}
+
+        //console.log( detail.rating, integerRating.length, {decimal} )
+
+    }
 
 
     return (
@@ -33,8 +49,42 @@ const Detail = ( {route, navigation} ) => {
                 </View>
                 <View style={{ width: 300}}>
                     <View style={styles.containerProperties}>
-                        <Text style={styles.txtProperties}> Released: {detail.released}</Text>
-                        <Text style={styles.txtProperties}> Ranking: {detail.rating}</Text>
+                        <Text style={[styles.txtProperties, { backgroundColor: 'white', borderRadius: 5,
+                                        alignSelf: 'center', paddingHorizontal: 5
+                                        }]}> 
+                            Released: {detail.released}
+                        </Text> 
+                    </View>
+
+                    <View  style={styles.containerProperties}>
+                        <Text style={[styles.txtProperties, { fontWeight: 'bold', alignSelf: 'center', 
+                                        color: 'purple'}]}> 
+                            Ranking
+                        </Text>
+                        <View style={styles.starStyle}>
+                            {integerRating?.map(index => {  // integer part
+                                return (
+                                    <Icon 
+                                    style={{ background_image: 'yellow', marginHorizontal: 10, }}
+                                    name= 'star'
+                                    size= {30}
+                                    color= 'yellow'
+                                />
+                                )
+                            })} 
+
+                            {decimal        // decimal part
+                                ?
+                                <Icon 
+                                    style={{ background_image: 'yellow', marginHorizontal: 10, }}
+                                    name= 'star-half'
+                                    size= {30}
+                                    color= 'yellow'
+                                />
+                                :
+                                <Text></Text>
+                            }
+                        </View>
                     </View>
                 </View>
                 <Text style={styles.titlePlatforms}>Platforms</Text>
@@ -120,37 +170,20 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         fontSize: 20,
     },
-    titleGenres: {
-        alignSelf: 'center',
-        color: 'purple',
-        fontSize: 25,
-        fontWeight: 'bold',    
-    },
-    genreContainer: {
-        flex: 1,
+    starStyle: {
         flexDirection: 'row',
-        flexWrap: 'wrap',
-        width: 320,
-        alignItems: 'center',
-        alignContent: 'center',
+        paddingVertical: 15,
+        marginTop: 5,
         justifyContent: 'center',
-        margin: 3,
-        borderColor: 'purple',
-        borderWidth: 2,
-        backgroundColor: 'white',
-        borderRadius: 10
-    },
-    genreStyle:{
-        alignSelf: 'center',
-        fontSize: 20,
-        marginHorizontal: 20,
-        marginVertical: 10,
-        paddingHorizontal: 5,
-        borderColor: 'grey',
+        alignContent: 'center',
+        alignItems: 'center',
+        alignSelf: "center",
+        backgroundColor: 'purple',
+        borderColor: 'white',
         borderBottomWidth: 4,
         borderRightWidth: 4,
         borderRadius: 10,
-        backgroundColor: 'yellow',
+        borderRadius: 15,
     },
     titlePlatforms: {
         alignSelf: 'center',
@@ -183,7 +216,40 @@ const styles = StyleSheet.create({
         borderRightWidth: 4,
         borderRadius: 10,
         backgroundColor: 'yellow',
-    }
+    },
+    titleGenres: {
+        alignSelf: 'center',
+        color: 'purple',
+        fontSize: 25,
+        fontWeight: 'bold',    
+    },
+    genreContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        width: 320,
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
+        margin: 3,
+        borderColor: 'purple',
+        borderWidth: 2,
+        backgroundColor: 'white',
+        borderRadius: 10
+    },
+    genreStyle:{
+        alignSelf: 'center',
+        fontSize: 20,
+        marginHorizontal: 20,
+        marginVertical: 10,
+        paddingHorizontal: 5,
+        borderColor: 'grey',
+        borderBottomWidth: 4,
+        borderRightWidth: 4,
+        borderRadius: 10,
+        backgroundColor: 'yellow',
+    },
+   
 });
 
 //make this component available to the app

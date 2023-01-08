@@ -41,18 +41,24 @@ const MenuItems = ( { navigation } ) => {
                 text = 'Source Select'
                 onPress = {() => navigation.navigate('Source Select')}
                 icon = 'database'
+                colorTxt= 'white'
+                colorButton= 'purple'
             />
             
             <MenuButtonItem
                 text = 'Genre Filter'
                 onPress = {() => navigation.navigate('Genre Filter')}
                 icon = 'filter'
+                colorTxt= 'white'
+                colorButton= 'purple'
             />
             
             <MenuButtonItem
                 text = 'Sort Options'
                 onPress = {() => navigation.navigate('Sort Options')}
                 icon = 'sort-amount-asc'
+                colorTxt= 'white'
+                colorButton= 'purple'
             />
         </DrawerContentScrollView>
     )

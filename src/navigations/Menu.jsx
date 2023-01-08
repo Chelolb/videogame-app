@@ -22,7 +22,7 @@ const Menu = () => {
                 name="Home"
                 component={Home}
                 options={{ headerShown: true, 
-                        title: `Videogames's Galery`}}
+                        title: `Videogame's Galery`}}
             />
             <Stack.Screen 
                 name="Detail" 

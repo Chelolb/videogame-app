@@ -6,7 +6,7 @@ import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 const Loading = () => {
     return (
         <View style={styles.container}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', color: 'purple', marginVertical: 50}}>
+        <Text style={styles.txtStyle}>
             Searching data, a moment please...
         </Text>
         

@@ -1,16 +1,37 @@
 //import libraries
 import { View, Text, Image, StyleSheet, ActivityIndicator } from 'react-native';
+import Ionicons from 'react-native-vector-icons/FontAwesome';
 
 // create a component
 const Card = ({id, image, name, rating, genres }) => {
+
+    var valor = 0;
+    
+    if (rating !== Math.floor(rating)) {
+        valor = rating }
+    else{
+        valor = `${rating}.00` 
+    }
+
     return (
-        <View style={styles.container}>    
+        <View style={styles.container}>
             <Image
                 style={styles.img}
                 PlaceholderContent={<ActivityIndicator color="#fff"/>}
                 source={{ uri: image }}
             >
             </Image>
+            <Ionicons 
+                style= {{ position: 'absolute', top: 130, left: 210}}
+                name= 'star'
+                size= {80}
+                color= 'yellow'
+            />
+            <Text style={{ borderRadius: 50, fontSize: 15, color: 'purple', fontWeight: 'bold',  
+                paddingHorizontal: 2, alignSelf: 'center', 
+                position: 'absolute', top: 158, left: 230 }}>
+                   {valor}
+            </Text>
             <Text style={styles.cardTitle}>{ name }</Text>
             <Text style={{alignSelf: 'center'}}>{`Rating: ${rating}`}</Text> 
             <View style={styles.genreContainer}>
