@@ -28,7 +28,10 @@ const Home = ( {navigation} ) => {
         <SafeAreaView style={styles.container}>
         <StatusBar barStyle = "light-content" hidden = {false} backgroundColor = "#770060" translucent = {true}/>
             <SearchBar/>
-            <ScrollView contentContainerStyle={styles.ScrollViewStyles}>
+            <ScrollView 
+                contentContainerStyle={styles.ScrollViewStyles}
+                showsVerticalScrollIndicator= {false}
+            >
                 <View>
                 {!currentVideogame.length ?    //  if array have not elements
                 

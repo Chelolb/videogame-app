@@ -115,7 +115,10 @@ const Create = ( { route, navigation } ) => {
   
     return (
         <View style={styles.container}>
-            <ScrollView style={{ width: 300 }}>
+            <ScrollView 
+                style={{ width: 300 }}
+                showsVerticalScrollIndicator= {false} 
+            >
                 <View style={styles.containerHeader}>
                     <Text style={styles.txtStyle}>Name:</Text>
                     <TextInput 

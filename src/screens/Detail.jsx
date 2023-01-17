@@ -1,13 +1,16 @@
 //import libraries
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Modal } from 'react-native';
 import { getVideogameById } from "../../reducers";
 import Loading from "../components/Loading";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import BackButton from '../components/BackButton';
 
 // create a component
 const Detail = ( {route, navigation} ) => {
+
+    const [showModal, setShowModal] = useState(false)
 
     const { itemId } = route.params;
     const dispatch = useDispatch();     // call Videogame with ID
@@ -20,21 +23,18 @@ const Detail = ( {route, navigation} ) => {
 
     let decimal = false;
 
-    //console.log(detail)
-
-    if(detail.rating > 0){     //if have detail, calculate show start
+    if(detail.rating > 0){     //if have detail, calculate show rating-start
         integerRating = Array.from(new Array(Math.floor(detail.rating)))
 
         if(detail.rating > integerRating.length) { decimal = true}
-
-        //console.log( detail.rating, integerRating.length, {decimal} )
 
     }
 
 
     return (
         <View style={styles.container}> 
-        <ScrollView style={{ width: '95%'}}> 
+        <ScrollView showsVerticalScrollIndicator= {false} 
+                    style={{ width: '95%'}}> 
             { detail.id === itemId
             ?           // if data is yet!
             <View>
@@ -44,9 +44,46 @@ const Detail = ( {route, navigation} ) => {
                 >
                 </Image>
                 <Text style={styles.cardTitle}>{detail.name}</Text>
-                <View style={styles.containerProperties}>
-                    <Text style={styles.txtDescription}>{detail.description}</Text>
-                </View>
+                <TouchableOpacity
+                    onPress={() => setShowModal(true)}
+                >
+                    <View style={[styles.containerProperties, {backgroundColor: 'yellow', 
+                                    borderBottomWidth: 7, borderRightWidth: 7, borderColor: 'purple',}]}>
+                        <Text style={styles.txtDescription}>{detail.description.slice(0, 200)}...</Text>
+                        <Text style={{ fontSize: 20, textAlign: 'justify', color: 'black', margin: 5,
+                                                alignSelf: 'flex-end'}}>
+                                    Ver más...
+                        </Text>
+                    </View>
+                </TouchableOpacity>
+                                     
+                <Modal visible={showModal}>
+                    <View>
+                        <BackButton                 
+                            onPress= {() => setShowModal(false)}
+                            title= 'Description'
+                            color= 'black'
+                            icon = 'arrow-left'
+                        />
+                        <View style={{ backgroundColor: 'yellow', borderRadius: 10, marginTop: 5, 
+                                        marginHorizontal: 15, borderBottomWidth: 5, borderRightWidth: 5, 
+                                        borderBottomRightRadius: 10, borderColor: 'purple' }}>
+                            {detail.description.length > 1100
+                                ?
+                                <Text style={{ fontSize: 15, textAlign: 'justify', color: 'black', 
+                                            padding: 10, }}>
+                                    {detail.description.slice(0, 1100)}...
+                                </Text>  
+                                :
+                                <Text style={{ fontSize: 15, textAlign: 'justify', color: 'black', 
+                                    padding: 10, }}>
+                                    {detail.description.slice(0, 1110)}
+                                </Text>
+                            }
+                        </View>
+                    </View>
+                </Modal>
+
                 <View style={{ width: 300}}>
                     <View style={styles.containerProperties}>
                         <Text style={[styles.txtProperties, { backgroundColor: 'white', borderRadius: 5,
@@ -55,12 +92,13 @@ const Detail = ( {route, navigation} ) => {
                             Released: {detail.released}
                         </Text> 
                     </View>
-
                     <View  style={styles.containerProperties}>
                         <Text style={[styles.txtProperties, { fontWeight: 'bold', alignSelf: 'center', 
                                         color: 'purple'}]}> 
-                            Ranking
+                            Ranking - {detail.rating}
                         </Text>
+ 
+                        {integerRating != 0 ?
                         <View style={styles.starStyle}>
                             {integerRating?.map(index => {  // integer part
                                 return (
@@ -85,6 +123,9 @@ const Detail = ( {route, navigation} ) => {
                                 <Text></Text>
                             }
                         </View>
+                        :
+                        <View></View>
+                        }
                     </View>
                 </View>
                 <Text style={styles.titlePlatforms}>Platforms</Text>
@@ -149,18 +190,14 @@ const styles = StyleSheet.create({
     },
     containerProperties: {
         flexDirection: 'column',
-        justifyContent: 'center',
         width: 320,
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
+        borderRadius: 10,
         margin: 5
     },
     txtDescription: {
         width: 310,
-        margin: 5,
-        borderBottomWidth: 7,
-        borderRightWidth: 7,
-        borderColor: 'purple',
         borderRadius: 10,
         padding: 10,
         textAlign: 'justify',
@@ -188,7 +225,7 @@ const styles = StyleSheet.create({
     titlePlatforms: {
         alignSelf: 'center',
         color: 'purple',
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',    
     },
     platformsContainer: {
@@ -220,7 +257,7 @@ const styles = StyleSheet.create({
     titleGenres: {
         alignSelf: 'center',
         color: 'purple',
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',    
     },
     genreContainer: {
