@@ -1,8 +1,6 @@
 import {createSlice, dispatch } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { Alert } from 'react-native';
-const ROUTE = 'http://192.168.0.137:3001' // since the device    (host Local)
-
+import { ROUTE } from '@env';
 
 export const videogameSlice = createSlice({
     name : "VIDEOGAMES",
@@ -17,6 +15,8 @@ export const videogameSlice = createSlice({
         sortDirection: [],
         newVideogamePlatforms: [],
         newVideogameGenres: [],
+        newVideogameReleased: [],
+        newVideogameRating: [],
     },
     reducers:{
         getAllVideogames(state,action){  
@@ -54,6 +54,14 @@ export const videogameSlice = createSlice({
         delPlaGen(state,action){
             state.newVideogameGenres = []
             state.newVideogamePlatforms = []
+        },
+
+        setNewReleased(state,action){
+            state.newVideogameReleased = action.payload
+        },
+
+        setNewRating(state,action){
+            state.newVideogameRating = action.payload
         },
 
         getAllGenres(state, action){
@@ -154,6 +162,7 @@ export const videogameSlice = createSlice({
 });
 
 export const getAllVideogames = ()=> async(dispatch) => {
+    console.log(ROUTE);
     try {
         var json = await axios.get(ROUTE + "/games/")     // require all Videogames (120)
         dispatch(videogameSlice.actions.getAllVideogames(json.data))
@@ -236,6 +245,14 @@ export const setNewGenres = (payload) => async(dispatch) => {       // set array
 
 export const delPlaGen = () => async(dispatch) => {       // delete platforms & genres array 
     dispatch(videogameSlice.actions.delPlaGen())
+}
+
+export const setNewReleased = (payload) => async(dispatch) => {       // set Released Date
+    dispatch(videogameSlice.actions.setNewReleased(payload))
+}
+
+export const setNewRating = (payload) => async(dispatch) => {       // set Rating Value
+    dispatch(videogameSlice.actions.setNewRating(payload))
 }
 
 export default videogameSlice.reducer

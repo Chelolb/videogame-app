@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
 
-import Menu from '../navigations/Menu';
+import Home from '../screens/Home';
 import FiltersNavigation from '../navigations/FiltersNavigation';
 import StackCreate from './StackCreate';
-import StackAbout from './StackAbout';
+import TabAbout from '../navigations/TabAbout';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,7 @@ const TabNavigation = ( {navigation} ) => {
     return (
         <Tab.Navigator             // define the Botton-tab 
         initialRouteName="Principal" // here define the "start" tab
-        screenOptions={({ route }) => ({
+        screenOptions={( { route }) => ({
         tabBarIcon: ({ focused, color, size }) => { // according to the tab state
             let iconName;                           // show the corresponding icono
 
@@ -41,15 +42,17 @@ const TabNavigation = ( {navigation} ) => {
         },
 
         tabBarActiveTintColor: 'purple',   // Icon's colors in the diferents states
-        //tabBarInactiveTintColor: 'lightblue',
         tabBarInactiveTintColor: '#D0D0D0'
         })}       
     >
-            <Tab.Screen name="Principal" component={Menu} options={{ headerShown: false }}/>
+            <Tab.Screen name="Principal" component={Home} options={{ headerShown: false }}/>
             <Tab.Screen name="Filters" component={FiltersNavigation} options={{ headerShown: false }}/>
             <Tab.Screen name="New Videogame" component={StackCreate} options={{ headerShown: false }}/>
-            <Tab.Screen name="About Us" component={StackAbout} options={{ headerShown: false }}/>
-          </Tab.Navigator>
+            <Tab.Screen name="About Us" component={TabAbout} 
+                                        options={{ headerShown: true, title: 'About',
+                                                    headerStyle: { backgroundColor: 'purple', },
+                                                    headerTintColor: 'white' }}/>
+        </Tab.Navigator>
     );
 };
 

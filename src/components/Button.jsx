@@ -2,9 +2,10 @@ import React from 'react';
 import { Text, StyleSheet, Pressable } from 'react-native';
 
 export default function Button(props) {
-  const { onPress, title } = props;
+  const { onPress, title, enable, color } = props;
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable style={[styles.button, {backgroundColor: enable ? color : 'grey'}]} 
+               onPress={ enable ? onPress : null }>
       <Text style={styles.text}>{title}</Text>
     </Pressable>
   );
@@ -18,9 +19,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginRight: 10,
     marginLeft: 5,
-    borderRadius: 5,
+    borderRadius: 30,
     elevation: 3,
-    backgroundColor: 'purple',
   },
   text: {
     fontSize: 16,
@@ -30,3 +30,9 @@ const styles = StyleSheet.create({
     color: 'white',
   },
 });
+
+Button.defaultProps = {
+  enable: true,
+  color: 'purple'
+
+};

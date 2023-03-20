@@ -4,13 +4,14 @@ import { View, Text, StyleSheet } from 'react-native';
 import Create from '../screens/Create'
 import SelectPlatforms from '../screens/SelectPlatforms';
 import SelectGenres from '../screens/SelectGenres';
+import SelectReleased from '../screens/SelectReleased';
+import SelectRating from '../screens/SelectRating';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 
 const Stack = createNativeStackNavigator();
 
 // create a component
-const StackCreate = () => {
+const StackCreate = ( {navigator} ) => {
     return (
         <Stack.Navigator
             screenOptions= {{ 
@@ -25,13 +26,21 @@ const StackCreate = () => {
                         title: `Create Videogame`}}
             />
             <Stack.Screen 
-                name="Select Plataforms" 
+                name="Select Platforms" 
                 component={SelectPlatforms} 
                 options={{title: `Select Plataforms`}}/>
             <Stack.Screen 
                 name="Select Genres" 
                 component={SelectGenres} 
                 options={{title: `Select Genres`}}/>
+            <Stack.Screen 
+                name="Select Released" 
+                component={SelectReleased} 
+                options={{title: `Select Released`}}/>
+             <Stack.Screen 
+                name="Select Rating" 
+                component={SelectRating} 
+                options={{title: `Select Rating`}}/>
         </Stack.Navigator>
     );
 };

@@ -12,22 +12,18 @@ const SelectPlatforms = ( { route, navigation } ) => {
     const { platformsSelect } = route.params;
     const dispatch = useDispatch();
 
-    const [openP, setOpenP] = useState(false);
-    const [valueP, setValueP] = useState([]);
+    const [openPlatforms, setOpenPlatforms] = useState(false);
+    const [arrayPlatforms, setArrayPlatforms] = useState([]);
 
           
     useEffect(() => {    // if have params => read and create array
 
         if (platformsSelect.length) {
-            //console.log(platformsSelect);
             let Selected = platformsSelect.split(', ');
-            setValueP(Selected);
+            setArrayPlatforms(Selected);
         }
 
     }, []);
-
-
-    // const [platforms, setPlatforms] = useState([]);
 
     
     let itemPlatforms = [             // itemdata for Platforms Picker`s items
@@ -51,19 +47,13 @@ const SelectPlatforms = ( { route, navigation } ) => {
         {label:'PlayStation 2', value:'PlayStation 2'},
         {label:'Dreamcast', value:'Dreamcast'},
         {label:'PSP', value:'PSP'}
-    ]
-
-    // function handlePlatform(){      // update Platforms selected
-    //     setPlatforms(valueP)
-    // }  
+    ]  
 
     function setUpPlatforms() {       // send genres array at store
 
-        //alert('platform selected');
+        let conjuntoPlatforms = (arrayPlatforms.join(', '))
 
-        let valor = (valueP.join(', '))
-
-        dispatch(setNewPlatforms(valor));
+        dispatch(setNewPlatforms(conjuntoPlatforms));
 
         navigation.navigate('Create');
 
@@ -72,26 +62,27 @@ const SelectPlatforms = ( { route, navigation } ) => {
     return (
         <View style={styles.container}>
             <View style={styles.containerAll}>
-                <Text style={{fontSize: 20, fontWeight: '100', padding: 10, alignSelf: 'center' }}>Select the Platforms...</Text>
+                <Text style={{fontSize: 20, fontWeight: '100', padding: 10, alignSelf: 'center' }}>
+                    Select the Platforms...
+                </Text>
 
                 <View style={{width: 260, alignSelf: 'center', padding: 20}}>
                     <DropDownPicker
-                        style={{
-                            //backgroundColor: 'lightblue', 
+                        style={{ 
                             borderColor: 'purple'}}
                         multiple={true}
                         min={0}
                         max={10}
-                        open={openP}
-                        value={valueP}
+                        open={openPlatforms}
+                        value={arrayPlatforms}
                         items={itemPlatforms}
-                        setOpen={setOpenP}
-                        setValue={setValueP}
+                        setOpen={setOpenPlatforms}
+                        setValue={setArrayPlatforms}
                         //onChangeValue ={handlePlatform}
                     />
-                    <View style={valueP.length ? styles.containerValue : styles.containerValue0}>
-                        { valueP
-                            ? valueP.map((c, index) => {         //  show selected platform
+                    <View style={arrayPlatforms.length ? styles.containerValue : styles.containerValue0}>
+                        { arrayPlatforms
+                            ? arrayPlatforms.map((c, index) => {         //  show selected platform
                                 return (
                                     <View style={styles.valueLabel} key={index} >
                                         <Text style={styles.txtPlatforms}>{c}</Text>
@@ -103,7 +94,8 @@ const SelectPlatforms = ( { route, navigation } ) => {
                     </View>
                 </View>
                     <View style={{paddingHorizontal: 100, marginVertical: 10}}>
-                        <Button
+                        <Button  
+                            enable= {arrayPlatforms.length ? true : false}
                             style={{with: 70, marginVertical: 15}}
                             title = 'Set Platforms'
                             onPress={() => setUpPlatforms()}>
@@ -123,9 +115,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#D0D0D0',
     },
     containerAll: { 
-        borderWidth: 4, 
-        borderColor: '#FFEB73',
-        borderRadius: 10,
+        borderRightWidth: 5,
+        borderBottomWidth: 5,
+        borderColor: 'rgb(150, 150, 150)',
+        borderWidth: 2,
+        borderRadius: 30, 
         backgroundColor: 'white',
     },
     containerValue: {

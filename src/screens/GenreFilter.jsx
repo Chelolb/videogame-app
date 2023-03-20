@@ -36,14 +36,16 @@ const GenreFilter = ( { navigation } ) => {
                 <Text style={{ fontSize: 28, fontWeight: '400', marginTop: 25, marginBottom: 25 }}>
                     Select Videogame's Genre
                 </Text>
-                <DropDownPicker
-                    style={styles.pickerStyle}
-                    open={open}
-                    value={value}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setValue}
-                />
+                <View style={{ width: 250}}>
+                    <DropDownPicker
+                        style={styles.pickerStyle}
+                        open={open}
+                        value={value}
+                        items={items}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                    />
+                </View>
                 <View style={{width: 75, marginTop: 150, alignSelf: 'center'}}>
                     <Button
                         style={{with: 40, marginVertical: 25 }}
@@ -66,11 +68,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#D0D0D0',
     },
     pickerStyle: { 
-        width: 280, 
+        width: 250, 
         backgroundColor: 'white',
-        borderWidth: 4, 
-        //borderColor: 'purple',
-        borderColor: '#FFEB73',
+        borderRightWidth: 5,
+        borderBottomWidth: 5,
+        borderColor: 'rgb(150, 150, 150)',
+        borderWidth: 2,
+        borderRadius: 30,
         marginBottom: 25, 
         marginTop: 30, 
         alignSelf: 'center'}

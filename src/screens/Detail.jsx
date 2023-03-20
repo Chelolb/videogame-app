@@ -13,9 +13,10 @@ const Detail = ( {route, navigation} ) => {
     const [showModal, setShowModal] = useState(false)
 
     const { itemId } = route.params;
+    console.log(itemId)
     const dispatch = useDispatch();     // call Videogame with ID
     
-    useEffect(() => { dispatch(getVideogameById(itemId)) }, [dispatch]);
+    useEffect(() => { dispatch(getVideogameById(itemId)) }, [itemId]);
 
     let detail = useSelector((state) => state.VIDEOGAMES.detailVideogame);
 
@@ -30,6 +31,7 @@ const Detail = ( {route, navigation} ) => {
 
     }
 
+    let i = 0;  // counter key rating's star
 
     return (
         <View style={styles.container}> 
@@ -47,32 +49,44 @@ const Detail = ( {route, navigation} ) => {
                 <TouchableOpacity
                     onPress={() => setShowModal(true)}
                 >
-                    <View style={[styles.containerProperties, {backgroundColor: 'yellow', 
-                                    borderBottomWidth: 7, borderRightWidth: 7, borderColor: 'purple',}]}>
-                        <Text style={styles.txtDescription}>{detail.description.slice(0, 200)}...</Text>
-                        <Text style={{ fontSize: 20, textAlign: 'justify', color: 'black', margin: 5,
-                                                alignSelf: 'flex-end'}}>
-                                    Ver más...
-                        </Text>
+                    { detail.description.length < 200 
+                    ?
+                    <View style={[styles.containerProperties, {backgroundColor: 'lightblue', 
+                                    borderBottomWidth: 7, borderRightWidth: 7, borderColor: 'grey',}]}>
+                            <Text style={styles.txtDescription}>{detail.description.slice(0, 200)}</Text>
                     </View>
+                    :
+                    <View style={[styles.containerProperties, {backgroundColor: 'lightblue', 
+                                    borderBottomWidth: 7, borderRightWidth: 7, borderColor: 'grey',}]}>
+                            <Text style={styles.txtDescription}>{detail.description.slice(0, 200)}...</Text>
+                            <Text style={{ fontSize: 20, textAlign: 'justify', color: 'blue', margin: 5,
+                                            alignSelf: 'flex-end'}}>
+                                Ver más...
+                            </Text>
+                    </View>
+                    }
                 </TouchableOpacity>
                                      
-                <Modal visible={showModal}>
+                <Modal  animationType="slide" 
+                        //transparent={true} 
+                        visible={showModal}>
                     <View>
-                        <BackButton                 
-                            onPress= {() => setShowModal(false)}
-                            title= 'Description'
-                            color= 'black'
-                            icon = 'arrow-left'
-                        />
-                        <View style={{ backgroundColor: 'yellow', borderRadius: 10, marginTop: 5, 
+                        <View style={{backgroundColor: 'purple', justifyContent: 'center'}}>
+                            <BackButton                 
+                                onPress= {() => setShowModal(false)}
+                                title= 'Description'
+                                color= 'white'
+                                icon = 'arrowleft'
+                            />
+                        </View>
+                        <View style={{ backgroundColor: 'lightblue', borderRadius: 10, marginTop: 5, 
                                         marginHorizontal: 15, borderBottomWidth: 5, borderRightWidth: 5, 
-                                        borderBottomRightRadius: 10, borderColor: 'purple' }}>
+                                        borderBottomRightRadius: 10, borderColor: 'grey' }}>
                             {detail.description.length > 1100
                                 ?
                                 <Text style={{ fontSize: 15, textAlign: 'justify', color: 'black', 
                                             padding: 10, }}>
-                                    {detail.description.slice(0, 1100)}...
+                                    {detail.description.slice(0, 1050)}...
                                 </Text>  
                                 :
                                 <Text style={{ fontSize: 15, textAlign: 'justify', color: 'black', 
@@ -84,10 +98,11 @@ const Detail = ( {route, navigation} ) => {
                     </View>
                 </Modal>
 
-                <View style={{ width: 300}}>
+                <View style={{ width: 300, alignSelf: 'center'}}>
                     <View style={styles.containerProperties}>
                         <Text style={[styles.txtProperties, { backgroundColor: 'white', borderRadius: 5,
-                                        alignSelf: 'center', paddingHorizontal: 5
+                                        alignSelf: 'center', paddingHorizontal: 5, borderBottomWidth: 5, 
+                                        borderRightWidth: 5, borderBottomRightRadius: 10, borderColor: 'grey' 
                                         }]}> 
                             Released: {detail.released}
                         </Text> 
@@ -102,12 +117,13 @@ const Detail = ( {route, navigation} ) => {
                         <View style={styles.starStyle}>
                             {integerRating?.map(index => {  // integer part
                                 return (
-                                    <Icon 
-                                    style={{ background_image: 'yellow', marginHorizontal: 10, }}
-                                    name= 'star'
-                                    size= {30}
-                                    color= 'yellow'
-                                />
+                                    <Icon
+                                        key={i++} 
+                                        style={{ background_image: 'yellow', marginHorizontal: 10, }}
+                                        name= 'star'
+                                        size= {30}
+                                        color= 'purple'
+                                    />
                                 )
                             })} 
 
@@ -117,13 +133,13 @@ const Detail = ( {route, navigation} ) => {
                                     style={{ background_image: 'yellow', marginHorizontal: 10, }}
                                     name= 'star-half'
                                     size= {30}
-                                    color= 'yellow'
+                                    color= 'purple'
                                 />
                                 :
                                 <Text></Text>
                             }
                         </View>
-                        :
+                        : 
                         <View></View>
                         }
                     </View>
@@ -132,7 +148,7 @@ const Detail = ( {route, navigation} ) => {
                 <View style={styles.platformsContainer}>
                 {detail.platforms?.map(index => {
                         return (
-                            <Text style = {styles.platformsStyle} key={index}>{index}</Text>
+                            <Text style = {styles.platformsStyle} key={index + 'plat'}>{index}</Text>
                         )
                     })}  
                 </View>
@@ -141,7 +157,7 @@ const Detail = ( {route, navigation} ) => {
                 <View style={styles.genreContainer}>
                 {detail.genres?.map(index => {
                         return (
-                            <Text style = {styles.genreStyle} key={index}>{index}</Text>
+                            <Text style = {styles.genreStyle} key={index +'gen'}>{index}</Text>
                         )
                     })}  
                 </View>
@@ -193,15 +209,16 @@ const styles = StyleSheet.create({
         width: 320,
         alignItems: 'center',
         justifyContent: 'center',
+        alignSelf: "center",
         borderRadius: 10,
-        margin: 5
+        marginBottom: 15
     },
     txtDescription: {
         width: 310,
         borderRadius: 10,
         padding: 10,
         textAlign: 'justify',
-        backgroundColor: 'yellow'
+        backgroundColor: 'lightblue'
     },
     txtProperties: {
         alignSelf: 'flex-start',
@@ -215,11 +232,10 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center',
         alignSelf: "center",
-        backgroundColor: 'purple',
-        borderColor: 'white',
-        borderBottomWidth: 4,
-        borderRightWidth: 4,
-        borderRadius: 10,
+        backgroundColor: 'white',
+        borderColor: 'grey',
+        borderBottomWidth: 5,
+        borderRightWidth: 5,
         borderRadius: 15,
     },
     titlePlatforms: {
@@ -236,11 +252,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        margin: 3,
+        alignSelf: "center",
         backgroundColor: 'white',
-        borderRadius: 10,
         borderWidth: 2,
-        borderColor: 'purple'
+        borderBottomWidth: 7,
+        borderRightWidth: 7,
+        borderColor: 'grey',
+        borderRadius: 10,
     },
     platformsStyle:{
         alignSelf: 'center',
@@ -252,7 +270,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 4,
         borderRightWidth: 4,
         borderRadius: 10,
-        backgroundColor: 'yellow',
+        backgroundColor: 'lightblue',
     },
     titleGenres: {
         alignSelf: 'center',
@@ -268,11 +286,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignContent: 'center',
         justifyContent: 'center',
-        margin: 3,
-        borderColor: 'purple',
+        alignSelf: "center",
         borderWidth: 2,
+        borderBottomWidth: 7,
+        borderRightWidth: 7,
+        borderColor: 'grey',
+        borderRadius: 10,
         backgroundColor: 'white',
-        borderRadius: 10
     },
     genreStyle:{
         alignSelf: 'center',
@@ -284,7 +304,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 4,
         borderRightWidth: 4,
         borderRadius: 10,
-        backgroundColor: 'yellow',
+        backgroundColor: 'lightblue',
     },
    
 });

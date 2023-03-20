@@ -1,13 +1,16 @@
 //import libraries
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, Text, Image, StyleSheet, ScrollView, SafeAreaView, 
-        TouchableOpacity, StatusBar, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, FlatList, SafeAreaView, 
+        TouchableOpacity, StatusBar, Dimensions } from 'react-native';
 import { getAllVideogames } from "../../reducers";
-import Card from '../components/Card';
+//import Card from '../components/Card';
+import CardMini from '../components/CardMini';
 import SearchBar from "../components/SearchBar";
 import Button from "../components/Button";
 import Loading from "../components/Loading";
+
+const { width } = Dimensions.get('window');
 
 // create a component
 const Home = ( {navigation} ) => {
@@ -24,16 +27,41 @@ const Home = ( {navigation} ) => {
         dispatch(getAllVideogames())   // call endpoint AllView;
     }
 
+    const renderItem =({ item, index }) => {
+        return(
+            <View>
+                <TouchableOpacity
+                    onPress={() => // call Detail screen and send ID
+                    navigation.navigate('Detail', {itemId: item.id})}
+                >
+                    <CardMini
+                        key = {item.id}
+                        id = {item.id} 
+                        image = {item.background_image} 
+                        name ={item.name}  
+                        genres = {item.genres} 
+                        rating = {item.rating}
+                    />
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     return (
         <SafeAreaView style={styles.container}>
         <StatusBar barStyle = "light-content" hidden = {false} backgroundColor = "#770060" translucent = {true}/>
-            <SearchBar/>
-            <ScrollView 
-                contentContainerStyle={styles.ScrollViewStyles}
-                showsVerticalScrollIndicator= {false}
-            >
-                <View>
-                {!currentVideogame.length ?    //  if array have not elements
+            <View style={{ justifyContent: 'center', alignItems: 'flex-start'}}>
+                <View style={{ height: 50, width: width, backgroundColor: 'purple', marginTop: 24, 
+                                justifyContent: 'center'}}>
+                    <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
+                        VideoGame`s Galery
+                    </Text>
+                </View>
+                <View style={{ alignSelf: 'center'}}>
+                    <SearchBar/>
+                </View>
+            </View>
+            {!currentVideogame.length ?    //  if array have not elements
                 
                 (currentVideogame.msg        
                     ?                           //  if is error menssage                                 
@@ -41,36 +69,24 @@ const Home = ( {navigation} ) => {
                         <Text>{currentVideogame.msg}</Text>
                     </View>  
                     :                       //  if is searching...  
-                    <View>
+                    <View style={{ height: 300}}>
                         <Loading/>
                     </View>
                     )
                     :                       // if have find videogame
-                    currentVideogame?.map((item) => {    // deploy Videogame
-                        return(                      
-                        <View key = {item.id}>   
-                            <TouchableOpacity
-                                onPress={() => // call Detail screen and send ID
-                                navigation.navigate('Detail', {itemId: item.id})}
-                            >
-                                <Card  
-                                    key = {item.id}
-                                    id = {item.id} 
-                                    image = {item.background_image} 
-                                    name ={item.name}  
-                                    genres = {item.genres} 
-                                    rating = {item.rating}
-                                />
-                            </TouchableOpacity>
-                        </View>
-                        
-                        ); 
-                    })
-                    }   
-                </View>
-               
-            </ScrollView> 
-            
+
+                    <SafeAreaView style={styles.container}>
+                        <FlatList
+                            data={currentVideogame}
+                            renderItem={renderItem}
+                            keyExtractor={item => item.id}
+                            numColumns={2}
+                            showsVerticalScrollIndicator={false}
+                        />
+                    </SafeAreaView>
+            } 
+
+
             { currentVideogame.length === 1  // if have only one card...
                 ?
                 <View style={{marginBottom: 50}}>
@@ -92,7 +108,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        justifyContent: 'center',
+        justifyContent: 'flex-start' ,
         alignItems: 'center',
         backgroundColor: '#D0D0D0',
     },

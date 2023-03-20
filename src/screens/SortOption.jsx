@@ -227,31 +227,30 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        //backgroundColor: 'lightblue',
         backgroundColor: '#D0D0D0'
     },
     contRadioBtnGroup: {
         flex: 1,
-        width: 250,
-        //height: 90,
+        width: 285,
         justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: '#fff',
         margin: 2,
-        // borderColor: 'blue',
-        // borderWidth: 2,
-        borderWidth: 4, 
-        borderColor: '#FFEB73',
-        borderRadius: 15
+        borderRightWidth: 5,
+        borderBottomWidth: 5,
+        borderColor: 'rgb(150, 150, 150)',
+        borderWidth: 2,
+        borderRadius: 30
     },
-    groupIntStyle: { 
-        //borderWidth: 2, 
-        //borderColor: 'blue', 
-        borderWidth: 4, 
-        borderColor: '#FFEB73', 
-        borderRadius: 15, 
+    groupIntStyle: {
         alignItems: 'flex-start',
         marginBottom: 15, 
+        borderRightWidth: 5,
+        borderBottomWidth: 5,
+        borderColor: 'rgb(150, 150, 150)',
+        borderWidth: 2,
+        borderRadius: 30,
+ 
     }
 });
 

@@ -46,7 +46,9 @@ const SourceOption = ( { navigation } ) => {
     return (
         <View style={styles.container}>
             <View style={{ width: '100%', height: 350, alignItems: 'center', marginTop: 5 }}>
-                <Text style={{ fontSize: 28, fontWeight: '400', marginVertical: 25 }}>Select Videogame's Source</Text>
+                <Text style={{ fontSize: 28, fontWeight: '400', marginVertical: 25 }}>
+                    Select Videogame's Source
+                </Text>
                 <View style={styles.contRadioBtn}>
                     <CheckBox
                         style = {styles.radioButton}
@@ -107,9 +109,12 @@ const styles = StyleSheet.create({
         marginTop: 25,
         marginBottom: 25,
         //borderColor: '#739D00',
-        borderColor: '#FFEB73',
-        borderWidth: 4,
-        borderRadius: 15
+        // borderColor: '#FFEB73',
+        borderRightWidth: 5,
+        borderBottomWidth: 5,
+        borderColor: 'rgb(150, 150, 150)',
+        borderWidth: 2,
+        borderRadius: 30
     },
     radioButton: {
         margin: 0,

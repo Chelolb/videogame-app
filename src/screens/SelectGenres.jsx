@@ -12,16 +12,15 @@ const SelectGenres = ( { route, navigation } ) => {
     const { genresSelect } = route.params; 
     const dispatch = useDispatch();
 
-    const [openG, setOpenG] = useState(false);
-    const [valueG, setValueG] = useState([]); 
+    const [openGenres, setOpenGenres] = useState(false);
+    const [arrayGenres, setArrayGenres] = useState([]); 
     
           
     useEffect(() => { // if have params => read and create array
 
         if (genresSelect.length) {
-            //console.log(genresSelect);
             let Selected = genresSelect.split(', ');
-            setValueG(Selected);
+            setArrayGenres(Selected);
         }
 
     }, []);
@@ -58,17 +57,12 @@ const SelectGenres = ( { route, navigation } ) => {
     ? allGenres.map(c => itemsGenres.push({ label: c.name, value: c.name }))
     : itemsGenres = dataGenres;
   
-    // function handleGenre(){      // update Genres selected
-    //     setGenres(valueG)
-    // }
 
     function setUpGenres() {    // send genres array at store
 
-        //alert('Genres selected');
+        let conjuntoGenres = (arrayGenres.join(', '))
 
-        let valor = (valueG.join(', '))
-
-        dispatch(setNewGenres(valor));
+        dispatch(setNewGenres(conjuntoGenres));
 
         navigation.navigate('Create');
 
@@ -77,26 +71,26 @@ const SelectGenres = ( { route, navigation } ) => {
     return (
         <View style={styles.container}>
             <View style={styles.containerAll}>
-                <Text style={{fontSize: 20, fontWeight: '100', padding: 10, alignSelf: 'center' }}>Select the Genres...</Text>
+                <Text style={{fontSize: 20, fontWeight: '100', padding: 10, alignSelf: 'center' }}>
+                    Select the Genres...
+                </Text>
 
                 <View style={{width: 260, alignSelf: 'center', padding: 20}}>
                         <DropDownPicker
-                            style={{
-                                //backgroundColor: 'lightblue', 
-                                borderColor: 'purple'}}
+                            style={{ borderColor: 'purple'}}
                             multiple={true}
                             min={0}
                             max={4}
-                            open={openG}
-                            value={valueG}
+                            open={openGenres}
+                            value={arrayGenres}
                             items={itemsGenres}
-                            setOpen={setOpenG}
-                            setValue={setValueG}
+                            setOpen={setOpenGenres}
+                            setValue={setArrayGenres}
                             //onChangeValue ={handleGenre}
                         />
-                        <View style={valueG.length ? styles.containerValue : styles.containerValue0}>
-                        { valueG
-                            ? valueG.map((c, index) => {         //  show selected type
+                        <View style={arrayGenres.length ? styles.containerValue : styles.containerValue0}>
+                        { arrayGenres.length
+                            ? arrayGenres.map((c, index) => {         //  show selected type
                                 return (
                                     <View style={styles.valueLabel} key={index} >
                                         <Text style={styles.txtGenres}>{c}</Text>
@@ -109,6 +103,7 @@ const SelectGenres = ( { route, navigation } ) => {
                 </View>
                     <View style={{paddingHorizontal: 100, marginVertical: 10}}>
                         <Button
+                            enable= {arrayGenres.length ? true : false}
                             style={{with: 70, marginVertical: 15}}
                             title = 'Set Genres'
                             onPress={() => setUpGenres()}>
@@ -128,9 +123,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#D0D0D0',
     },
     containerAll: { 
-        borderWidth: 4, 
-        borderColor: '#FFEB73',
-        borderRadius: 10,
+        borderRightWidth: 5,
+        borderBottomWidth: 5,
+        borderColor: 'rgb(150, 150, 150)',
+        borderWidth: 2,
+        borderRadius: 30, 
         backgroundColor: 'white',
     },
     containerValue: {

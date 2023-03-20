@@ -43,14 +43,13 @@ const styles = StyleSheet.create({
     
     searchStyle: {
         flexDirection: 'row',
+        width: 260,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 10,
         borderWidth: 3,
-        borderRadius: 10,
-        borderColor: '#FFEB73',
-        //borderColor: '#41DB00',
-        //borderColor: '#739D00',
+        borderRadius: 30,
+        borderColor: 'rgb(150, 150, 150)',
         backgroundColor: 'white'
     },
     input: {
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginVertical: 10,
         borderWidth: 1,
-        borderRadius: 5,
+        borderRadius: 20,
         borderColor: 'violet',
         padding: 10,
         backgroundColor: 'white'

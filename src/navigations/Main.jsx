@@ -1,13 +1,14 @@
 //import libraries
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import TabNavigation from './TabNavigation';
+//import TabNavigation from './TabNavigation';
+import Menu from './Menu';
 
 // create a component
 const Main = () => {
     return (
         <NavigationContainer>{/* Rest of your app code */}
-            <TabNavigation/>
+            <Menu/>
         </NavigationContainer>
     );
 };
