@@ -47,6 +47,7 @@ const ShowBackend = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: '#D0D0D0',
     },

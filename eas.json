@@ -1,0 +1,25 @@
+{
+  "cli": {
+    "version": ">= 3.6.1"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "ROUTE": "https://videogames-app-hexo.onrender.com"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

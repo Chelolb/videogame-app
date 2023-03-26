@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux"
 import { View, Text, StyleSheet } from 'react-native';
 import { getVideogameFilter } from '../../reducers';
-import { CheckBox } from '@rneui/themed';
+import { RadioButton } from 'react-native-paper';
 import Button from '../components/Button';
 
 // create a component
@@ -11,35 +11,10 @@ const SourceOption = ( { navigation } ) => {
 
     const dispatch = useDispatch();
 
-    const [all, setAll] = useState(true);
-    const [api, setApi] = useState(false)
-    const [db, setDb] = useState(false)
-    const [option, setOption] = useState("all")
-
-    const optionAll = () => {
-        setAll(true);
-        setApi(false);
-        setDb(false);
-        setOption("all");
-    }
-
-    const optionApi = () => {
-        setAll(false);
-        setApi(true);
-        setDb(false);
-        setOption("api");
-    }
-
-    const optionDb = () => {
-        setAll(false);
-        setApi(false);
-        setDb(true);
-        setOption("db");
-    }
+    const [value, setValue] = React.useState('all');
 
     function setFilter() {
-        dispatch(getVideogameFilter(option));
-        //alert(`Option source: "${option}" activado`)
+        dispatch(getVideogameFilter(value));
         navigation.navigate('Principal')
     }
 
@@ -50,36 +25,20 @@ const SourceOption = ( { navigation } ) => {
                     Select Videogame's Source
                 </Text>
                 <View style={styles.contRadioBtn}>
-                    <CheckBox
-                        style = {styles.radioButton}
-                        title= "All"
-                        center
-                        checked = {all}
-                        checkedIcon = "dot-circle-o"
-                        uncheckedIcon='circle-o'
-                        checkedColor='purple'
-                        onPress={optionAll}
-                        />
-                    <CheckBox
-                        style = {{margin: 0}}
-                        title= "API"
-                        center
-                        checked = {api}
-                        checkedIcon = "dot-circle-o"
-                        uncheckedIcon='circle-o'
-                        checkedColor='purple'
-                        onPress={optionApi}
-                    />
-                    <CheckBox
-                        style = {{margin: 0}}
-                        title= "DB"
-                        center
-                        checked = {db}
-                        checkedIcon = "dot-circle-o"
-                        uncheckedIcon='circle-o'
-                        checkedColor='purple'
-                        onPress={optionDb}
-                    />
+                    <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start'}}>
+                            <RadioButton value="all" />
+                            <Text style={{fontWeight: 'bold', marginTop: 7}}>All</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start'}}>
+                            <RadioButton value="api" />
+                            <Text style={{fontWeight: 'bold', marginTop: 7}}>API</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start'}}>
+                            <RadioButton value="db" />
+                            <Text style={{fontWeight: 'bold', marginTop: 7}}>DB</Text>
+                        </View>
+                    </RadioButton.Group>
                 </View>
                 <Button
                     style={{with: 70, marginVertical: 25 }}
@@ -97,19 +56,16 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        //backgroundColor: 'lightblue',
         backgroundColor: '#D0D0D0',
     },
     contRadioBtn: {
         flex: 1,
         width: 150,
-        justifyContent: 'space-evenly',
+        justifyContent: 'space-evenly' ,
         alignItems: 'center',
         backgroundColor: '#fff',
         marginTop: 25,
         marginBottom: 25,
-        //borderColor: '#739D00',
-        // borderColor: '#FFEB73',
         borderRightWidth: 5,
         borderBottomWidth: 5,
         borderColor: 'rgb(150, 150, 150)',

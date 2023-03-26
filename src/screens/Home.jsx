@@ -54,7 +54,7 @@ const Home = ( {navigation} ) => {
                 <View style={{ height: 50, width: width, backgroundColor: 'purple', marginTop: 24, 
                                 justifyContent: 'center'}}>
                     <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', marginLeft: 20}}>
-                        VideoGame`s Galery
+                        MobiGame`s Galery
                     </Text>
                 </View>
                 <View style={{ alignSelf: 'center'}}>

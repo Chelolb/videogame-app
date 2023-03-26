@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, Linking, TouchableOpacity, Pressable, Dimensions} from 'react-native';
 import Ionicons from 'react-native-vector-icons/FontAwesome';
-import marceimg from '../../assets/imgAbout/marceimg.png';
+import marceimg from '../../assets/imgAbout/marcelo.jpg';
 
 const { width } = Dimensions.get('window');
 
@@ -134,7 +134,7 @@ const About = ( { navigation } ) => {
             </View>
             <View style={styles.notaStyle}>
                 <Text style={styles.txtNotaStyle}>
-                    This application is a Mobile App that consumes the data 
+                    MobiGame is a Mobile App that consumes the data 
                     from the API backend of my version Videogame's Project.
                 </Text>
             </View>
@@ -151,7 +151,7 @@ const About = ( { navigation } ) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        //justifyContent: 'center',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: '#D0D0D0',
     },

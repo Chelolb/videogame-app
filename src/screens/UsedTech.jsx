@@ -8,7 +8,7 @@ import imgReact from '../../assets/imgTech/react-native.png'
 const UsedTech = ( { navigation } ) => {
     return (
         <View style={styles.container}>
-            <Text style={{ fontSize: 20, fontWeight: '200', marginBottom: 25, padding: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: '200', marginVertical: 15, padding: 10 }}>
                 In this project the following technologies and tools were used...
             </Text>
             <View style={{ width: 300, flexDirection: 'row', justifyContent: 'center', alignItems: 'center',
@@ -39,6 +39,7 @@ const UsedTech = ( { navigation } ) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: '#D0D0D0',
     },

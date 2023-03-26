@@ -35,7 +35,7 @@ const MenuItems = ( { navigation } ) => {
     return(
         <DrawerContentScrollView    // Menu title 
             style={styles.container}>
-            <Text style={styles.title}>MovGame</Text>
+            <Text style={styles.title}>MobiGame</Text>
 
             <MenuButtonItem
                 text = 'Source Select'
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         padding: 15
     },
     title: {
-        width: 180,
+        width: 200,
         paddingHorizontal: 30,
         paddingVertical: 10,
         color: 'purple',
@@ -79,8 +79,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
         alignSelf: 'center',
-        //backgroundColor: '#41DB00',
-        backgroundColor: '#FFEB73'
+        backgroundColor: '#D0D0D0'
     }
 });
 
